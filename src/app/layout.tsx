@@ -3,9 +3,9 @@ import '@once-ui-system/core/css/tokens.css';
 import '@/resources/custom.css'
 
 import classNames from "classnames";
-
+import { LayoutProvider } from '@once-ui-system/core'; 
 import { Background, Column, Flex, Meta, opacity, SpacingToken } from "@once-ui-system/core";
-import { Footer, Header, RouteGuard, Providers } from '@/components';
+import { Footer, Header, RouteGuard, Providers, Analytics, PerformanceMonitor, SecurityDashboard } from '@/components';
 import { baseURL, effects, fonts, style, dataStyle, home } from '@/resources';
 
 export async function generateMetadata() {
@@ -37,6 +37,13 @@ export default async function RootLayout({
       )}
     >
       <head>
+        <link rel="icon" href="/favicon.ico" sizes="32x32" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/api/rss" />
+        <meta name="theme-color" content="#000000" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <script
           id="theme-init"
           dangerouslySetInnerHTML={{
@@ -94,8 +101,10 @@ export default async function RootLayout({
             `,
           }}
         />
+        <Analytics />
       </head>
       <Providers>
+         <LayoutProvider> 
         <Column as="body" background="page" fillWidth style={{minHeight: "100vh"}} margin="0" padding="0" horizontal="center">
           <Background
             position="fixed"
@@ -138,7 +147,7 @@ export default async function RootLayout({
               color: effects.lines.color,
             }}
           />
-          <Flex fillWidth minHeight="16" hide="s"/>
+          <Flex fillWidth minHeight="16" hide/>
             <Header />
             <Flex
               zIndex={0}
@@ -155,7 +164,10 @@ export default async function RootLayout({
             </Flex>
             <Footer/>
           </Column>
+          </LayoutProvider> 
         </Providers>
+        <PerformanceMonitor />
+        <SecurityDashboard />
       </Flex>
   );
 }

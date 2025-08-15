@@ -1,0 +1,67 @@
+---
+title: "Getting Started with React: A Journey into Modern Web Development"
+summary: "My experience learning React and how it transformed my approach to building user interfaces. Tips for beginners starting their React journey."
+publishedAt: "2024-12-15"
+tag: "React"
+image: "/images/gallery/img-01.jpg"
+---
+
+## Why I Chose React
+
+When I first started my journey as a software engineer, I was overwhelmed by the number of JavaScript frameworks available. After working on several projects at Pinnacle Teleservices and later at St. Vincent Pallotti College, I realized that React offered the perfect balance of flexibility and structure.
+
+## Key Concepts That Changed Everything
+
+### Component-Based Architecture
+
+The moment I understood that everything in React is a component, my development approach completely transformed. Instead of thinking in terms of pages, I started thinking in terms of reusable, independent pieces of functionality.
+
+<CodeBlock
+  marginBottom="16"
+  codes={[
+    {
+      code: `function WelcomeMessage({ name }) {
+  return <h1>Hello, {name}!</h1>;
+}
+
+// Usage
+<WelcomeMessage name="Aman" />`,
+      language: "jsx",
+      label: "React Component"
+    }
+  ]}
+  copyButton={true}
+/>
+
+### State Management
+
+Coming from traditional DOM manipulation, React's state management felt like magic. The declarative approach where you describe what the UI should look like based on the current state was a game-changer.
+
+## Lessons from Real Projects
+
+### Campus Management System
+
+While developing the campus management system at St. Vincent Pallotti College, I learned the importance of proper component structure. Breaking down complex forms and data tables into smaller, manageable components made maintenance so much easier.
+
+### Performance Optimization
+
+Working on real-time applications taught me about React's rendering behavior and the importance of:
+- Using `useMemo` for expensive calculations
+- Implementing `useCallback` for event handlers
+- Understanding when and how to use `React.memo`
+
+## Tips for Beginners
+
+1. **Start with Function Components**: Class components are legacy. Learn hooks from day one.
+2. **Master the Dev Tools**: React Developer Tools extension is your best friend.
+3. **Think in React**: Don't fight the framework - embrace its patterns.
+4. **Practice with Real Projects**: Build something you're passionate about.
+
+## What's Next?
+
+The React ecosystem is constantly evolving. Currently, I'm exploring:
+- Server Components in Next.js
+- Advanced patterns with Zustand for state management
+- React Query for server state management
+
+React has been fundamental to my growth as a developer, and I'm excited to continue exploring its capabilities in future projects.

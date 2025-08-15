@@ -12,6 +12,10 @@ import {
   HiOutlineDocument,
   HiOutlineGlobeAsiaAustralia,
   HiOutlineRocketLaunch,
+  HiMagnifyingGlass,
+  HiExclamationTriangle,
+  HiStar,
+  HiCodeBracket,
 } from "react-icons/hi2";
 
 import {
@@ -45,7 +49,11 @@ export const iconLibrary: Record<string, IconType> = {
   threads: FaThreads,
   arrowUpRightFromSquare: HiArrowTopRightOnSquare,
   document: HiOutlineDocument,
-  rocket: HiOutlineRocketLaunch
+  rocket: HiOutlineRocketLaunch,
+  search: HiMagnifyingGlass,
+  warning: HiExclamationTriangle,
+  star: HiStar,
+  branch: HiCodeBracket
 };
 
 export type IconLibrary = typeof iconLibrary;

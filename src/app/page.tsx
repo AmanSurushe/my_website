@@ -1,8 +1,8 @@
 import React from "react";
 
 import { Heading, Flex, Text, Button, Avatar, RevealFx, Column, Badge, Row, Meta, Schema } from "@once-ui-system/core";
-import { home, about, person, newsletter, baseURL, routes } from "@/resources";
-import { Mailchimp } from "@/components";
+import { home, about, person, newsletter, baseURL, routes, repositories } from "@/resources";
+import { Mailchimp, Repositories, FadeInWhenVisible, StaggerContainer } from "@/components";
 import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
 
@@ -71,7 +71,7 @@ export default function Home() {
         <Projects range={[1, 1]} />
       </RevealFx>
       {routes["/blog"] && (
-        <Flex fillWidth gap="24" mobileDirection="column">
+        <Flex fillWidth gap="24" direction="column">
           <Flex flex={1} paddingLeft="l" paddingTop="24">
             <Heading as="h2" variant="display-strong-xs" wrap="balance">
               Latest from the blog
@@ -83,6 +83,20 @@ export default function Home() {
         </Flex>
       )}
       <Projects range={[2]} />
+      {routes["/repositories"] && (
+        <FadeInWhenVisible delay={0.3}>
+          <Flex fillWidth gap="24" direction="column">
+            <Flex flex={1} paddingLeft="l" paddingTop="24">
+              <Heading as="h2" variant="display-strong-xs" wrap="balance">
+                Latest repositories
+              </Heading>
+            </Flex>
+            <Flex flex={3} paddingX="20">
+              <Repositories username="AmanSurushe" maxRepos={6} showFilters={false} />
+            </Flex>
+          </Flex>
+        </FadeInWhenVisible>
+      )}
       {newsletter.display && <Mailchimp newsletter={newsletter} />}
     </Column>
   );

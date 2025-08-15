@@ -52,3 +52,31 @@
   --scheme-neutral-600-50: rgba(137,152,159,0.5);
   /*
 }*/
+
+/* Loading animations */
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Smooth transitions for interactive elements */
+.hover-scale {
+  transition: transform 0.2s ease-in-out;
+}
+
+.hover-scale:hover {
+  transform: scale(1.02);
+}
+
+/* Focus styles for accessibility */
+.focus-visible {
+  outline: 2px solid var(--brand-background-strong);
+  outline-offset: 2px;
+}

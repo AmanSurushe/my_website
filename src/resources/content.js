@@ -1,16 +1,16 @@
 import { Logo } from "@once-ui-system/core";
 
 const person = {
-  firstName: "Selene",
-  lastName: "Yu",
+  firstName: "Aman",
+  lastName: "Surushe",
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Design Engineer",
+  role: "Software Engineer",
   avatar: "/images/avatar.jpg",
-  email: "example@gmail.com",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  email: "aamansurushe@gmail.com",
+  location: "Asia/Kolkata", // Nagpur, Maharashtra, India
+  languages: ["English", "Hindi", "Marathi"], // optional: Leave the array empty if you don't want to display languages
 };
 
 const newsletter = {
@@ -30,17 +30,12 @@ const social = [
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system/nextjs-starter",
+    link: "https://github.com/AmanSurushe",
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
-  },
-  {
-    name: "Threads",
-    icon: "threads",
-    link: "https://www.threads.com/@once_ui",
+    link: "https://www.linkedin.com/in/aman-surushe/",
   },
   {
     name: "Email",
@@ -55,16 +50,16 @@ const home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  headline: <>Building scalable solutions with Node.js & React</>,
   featured: {
-    display: true,
-    title: <>Recent project: <strong className="ml-4">Once UI</strong></>,
-    href: "/work/building-once-ui-a-customizable-design-system",
+    display: false,
+    title: <>Recent project: <strong className="ml-4">WhatsApp Campaign System</strong></>,
+    href: "/work/whatsapp-campaign-system",
   },
   subline: (
     <>
-      I'm Selene, a design engineer at <Logo icon="/trademarks/wordmark-dark.svg" style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }}/>, where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
+      I'm Aman, a Full-Stack Software Engineer with nearly 3 years of experience crafting robust 
+      <br /> backend systems and intuitive frontend experiences. I specialize in high-performance solutions.
     </>
   ),
 };
@@ -90,9 +85,10 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Aman is a Nagpur-based Software Engineer with nearly 3 years of hands-on experience crafting robust and scalable solutions. 
+        He specializes in building high-performance backend systems with Node.js and creating intuitive frontend experiences with React.js. 
+        His expertise extends to real-time communication technologies like Asterisk, and he has a proven track record of developing and 
+        managing large-scale systems that handle over 1.2 billion messages.
       </>
     ),
   },
@@ -101,41 +97,49 @@ const about = {
     title: "Work Experience",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "Pinnacle Teleservices Pvt Ltd",
+        timeframe: "Dec 2023 - Present",
+        role: "Software Developer",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            Supported high-performance voice campaigns and managed daily WhatsApp campaigns 
+            processing 20 lakh messages/day, handling 120+ crore messages to date.
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
+            Developed scalable CRM middleware and integrated real-time monitoring using 
+            Prometheus and Grafana for performance tracking.
           </>,
         ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "St. Vincent Pallotti College of Engineering & Technology",
+        timeframe: "Nov 2022 - Dec 2023",
+        role: "Software Developer",
         achievements: [
           <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
+            Streamlined gate pass generation and tracking through barcode-based systems,
+            improving campus security and operational efficiency.
           </>,
           <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
+            Developed applications like Remuneration and Barcode Gate Pass Systems,
+            automating internal processes for better campus management.
+          </>,
+        ],
+        images: [],
+      },
+      {
+        company: "Oxybills Services India Pvt Ltd",
+        timeframe: "May 2022 - Aug 2022",
+        role: "Backend Developer Intern",
+        achievements: [
+          <>
+            Developed backend services using MVC Architecture and Redis, enhancing system 
+            integration and data processing for improved data flow and system efficiency.
+          </>,
+          <>
+            Optimized database performance using Prometheus and ensured smooth third-party 
+            system integration, leading to faster data retrieval and reduced downtime.
           </>,
         ],
         images: [],
@@ -161,36 +165,24 @@ const about = {
     title: "Technical skills",
     skills: [
       {
-        title: "Figma",
-        description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        title: "Node.js & Backend Development",
+        description: <>Building robust backend systems with Node.js, TypeScript, Redis, and database optimization for high-performance applications.</>,
+        images: [],
       },
       {
-        title: "Next.js",
-        description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        title: "React.js & Frontend Development",
+        description: <>Creating intuitive and responsive user interfaces with React.js, ensuring seamless integration with backend systems.</>,
+        images: [],
+      },
+      {
+        title: "Real-time Communication & Asterisk",
+        description: <>Expertise in voice solutions using Asterisk, SIP, PRI integration, and real-time monitoring systems with Prometheus and Grafana.</>,
+        images: [],
+      },
+      {
+        title: "Database & DevOps",
+        description: <>Managing MySQL and MongoDB databases, implementing Redis caching, and Git-based deployment workflows for scalable systems.</>,
+        images: [],
       },
     ],
   },
@@ -265,4 +257,18 @@ const gallery = {
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+const repositories = {
+  path: "/repositories",
+  label: "Repositories",
+  title: `GitHub Repositories – ${person.name}`,
+  description: `Explore ${person.name}'s open source projects and GitHub repositories`,
+};
+
+const contact = {
+  path: "/contact",
+  label: "Contact",
+  title: `Contact – ${person.name}`,
+  description: `Get in touch with ${person.name}`,
+};
+
+export { person, social, newsletter, home, about, blog, work, gallery, repositories, contact };

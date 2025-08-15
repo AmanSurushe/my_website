@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 import { Fade, Flex, Line, ToggleButton } from "@once-ui-system/core";
 
-import { routes, display, person, about, blog, work, gallery } from "@/resources";
+import { routes, display, person, about, blog, work, gallery, repositories, contact } from "@/resources";
 import { ThemeToggle } from "./ThemeToggle";
 import styles from "./Header.module.scss";
 
@@ -47,8 +47,8 @@ export const Header = () => {
 
   return (
     <>
-      <Fade hide="s" fillWidth position="fixed" height="80" zIndex={9} />
-      <Fade show="s" fillWidth position="fixed" bottom="0" to="top" height="80" zIndex={9} />
+      <Fade hide fillWidth position="fixed" height="80" zIndex={9} />
+      <Fade fillWidth position="fixed" bottom="0" to="top" height="80" zIndex={9} />
       <Flex
         fitHeight
         position="unset"
@@ -61,7 +61,7 @@ export const Header = () => {
         data-border="rounded"
       >
         <Flex paddingLeft="12" fillWidth vertical="center" textVariant="body-default-s">
-          {display.location && <Flex hide="s">{person.location}</Flex>}
+          {display.location && <Flex hide>{person.location}</Flex>}
         </Flex>
         <Flex fillWidth horizontal="center">
           <Flex
@@ -112,6 +112,23 @@ export const Header = () => {
                   />
                 </>
               )}
+              {routes["/repositories"] && (
+                <>
+                  <ToggleButton
+                    className="s-flex-hide"
+                    prefixIcon="github"
+                    href="/repositories"
+                    label={repositories.label}
+                    selected={pathname.startsWith("/repositories")}
+                  />
+                  <ToggleButton
+                    className="s-flex-show"
+                    prefixIcon="github"
+                    href="/repositories"
+                    selected={pathname.startsWith("/repositories")}
+                  />
+                </>
+              )}
               {routes["/blog"] && (
                 <>
                   <ToggleButton
@@ -126,6 +143,23 @@ export const Header = () => {
                     prefixIcon="book"
                     href="/blog"
                     selected={pathname.startsWith("/blog")}
+                  />
+                </>
+              )}
+              {routes["/contact"] && (
+                <>
+                  <ToggleButton
+                    className="s-flex-hide"
+                    prefixIcon="email"
+                    href="/contact"
+                    label={contact.label}
+                    selected={pathname.startsWith("/contact")}
+                  />
+                  <ToggleButton
+                    className="s-flex-show"
+                    prefixIcon="email"
+                    href="/contact"
+                    selected={pathname.startsWith("/contact")}
                   />
                 </>
               )}
@@ -146,9 +180,28 @@ export const Header = () => {
                   />
                 </>
               )}
+              <ToggleButton
+                className="s-flex-hide"
+                prefixIcon="star"
+                href="/testimonials"
+                label="Testimonials"
+                selected={pathname === "/testimonials"}
+              />
+              <ToggleButton
+                className="s-flex-show"
+                prefixIcon="star"
+                href="/testimonials"
+                selected={pathname === "/testimonials"}
+              />
+              <Line background="neutral-alpha-medium" vert maxHeight="24" />
+              <ToggleButton
+                prefixIcon="search"
+                href="/search"
+                selected={pathname === "/search"}
+                aria-label="Search"
+              />
               {display.themeSwitcher && (
                 <>
-                  <Line background="neutral-alpha-medium" vert maxHeight="24" />
                   <ThemeToggle />
                 </>
               )}
@@ -163,7 +216,7 @@ export const Header = () => {
             textVariant="body-default-s"
             gap="20"
           >
-            <Flex hide="s">{display.time && <TimeDisplay timeZone={person.location} />}</Flex>
+            <Flex hide>{display.time && <TimeDisplay timeZone={person.location} />}</Flex>
           </Flex>
         </Flex>
       </Flex>

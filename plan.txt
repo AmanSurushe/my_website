@@ -1,0 +1,102 @@
+# Magic Portfolio Customization Plan
+
+## Project Overview
+Transform the existing Magic Portfolio template into a personal portfolio and blog website with GitHub project showcase functionality.
+
+## Primary Goals
+1. Create personalized portfolio website
+2. Maintain existing design system (Once UI)
+3. Fix responsive design issues in development mode
+4. Add GitHub repositories showcase section
+5. Update all content with personal information
+
+## Phase 1: Content Personalization
+### Personal Information Update
+- [ ] Update person object in src/resources/content.js
+  - Name, role, avatar, email, location, languages
+- [ ] Update social links (GitHub, LinkedIn, etc.)
+- [ ] Replace demo images with personal photos
+- [ ] Update baseURL in once-ui.config.js
+
+### Page Content Updates
+- [ ] Home page: headline, subline, featured project
+- [ ] About page: introduction, work experience, education, technical skills
+- [ ] Update meta descriptions and SEO content
+- [ ] Replace placeholder blog posts with personal content
+- [ ] Update work projects with personal portfolio pieces
+
+## Phase 2: Responsive Design Fixes
+### Investigation & Fixes
+- [ ] Test current responsive behavior in dev mode
+- [ ] Identify specific breakpoints causing issues
+- [ ] Check CSS/SCSS modules for responsive problems
+- [ ] Test Once UI responsive utilities
+- [ ] Fix any layout issues on mobile/tablet
+
+## Phase 3: GitHub Repository Showcase
+### New Section Development
+- [ ] Create GitHub API integration
+- [ ] Design repository card component
+- [ ] Add filtering/sorting options for repositories
+- [ ] Implement pagination or infinite scroll
+- [ ] Add repository statistics (stars, forks, language)
+- [ ] Create dedicated page route (/repositories or /projects)
+
+### Required Information for GitHub Integration:
+- GitHub username
+- Personal access token (optional, for higher API limits)
+- Repository filtering preferences (exclude forks, private repos, etc.)
+- Display preferences (number of repos, sorting criteria)
+
+## Phase 4: Additional Enhancements
+- [ ] Update favicon and branding
+- [ ] Configure proper environment variables
+- [ ] Test and fix any TypeScript errors
+- [ ] Optimize images and assets
+- [ ] Update README with personal information
+
+## Technical Requirements
+### GitHub API Integration Details Needed:
+1. **GitHub Username**: Your GitHub username for API calls
+2. **Repository Filtering**:
+   - Include/exclude forks?
+   - Include/exclude private repositories?
+   - Specific repositories to highlight or exclude?
+   - Minimum star count filter?
+3. **Display Preferences**:
+   - Number of repositories to show per page
+   - Sorting criteria (recent, stars, forks, name)
+   - Which repository data to display (description, languages, stats)
+4. **API Configuration**:
+   - Use GitHub personal access token? (for higher rate limits)
+   - Caching strategy for repository data
+
+### Responsive Design Investigation:
+- [ ] Test on different screen sizes (mobile, tablet, desktop)
+- [ ] Check CSS Grid/Flexbox implementations
+- [ ] Verify Once UI breakpoint usage
+- [ ] Test navigation and component responsiveness
+
+## Questions for Implementation:
+1. **Personal Details**: What are your actual name, role, email, location, etc.?
+2. **GitHub Integration**: 
+   - Your GitHub username?
+   - Any specific repositories you want to highlight or exclude?
+   - Preferred sorting/filtering for repo display?
+3. **Content**: Do you have existing blog posts or project descriptions ready?
+4. **Branding**: Any specific color scheme or styling preferences?
+5. **Domain**: What will be your final domain name for SEO setup?
+
+## Development Workflow:
+1. Start with content updates (Phase 1)
+2. Fix responsive issues while testing content changes (Phase 2)  
+3. Develop GitHub showcase feature (Phase 3)
+4. Final polish and optimization (Phase 4)
+
+## Success Criteria:
+- ✅ Fully personalized portfolio content
+- ✅ Responsive design working correctly across all devices
+- ✅ Dynamic GitHub repository showcase
+- ✅ Fast loading and optimized performance
+- ✅ SEO-friendly with proper meta tags
+- ✅ Clean, professional appearance maintained

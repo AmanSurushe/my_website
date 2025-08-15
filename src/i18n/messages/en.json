@@ -1,0 +1,100 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "work": "Work",
+    "repositories": "Repositories",
+    "blog": "Blog",
+    "contact": "Contact",
+    "gallery": "Gallery",
+    "testimonials": "Testimonials",
+    "search": "Search"
+  },
+  "home": {
+    "headline": "Building scalable solutions with Node.js & React",
+    "subline": "I'm Aman, a Full-Stack Software Engineer with nearly 3 years of experience crafting robust backend systems and intuitive frontend experiences. I specialize in high-performance solutions.",
+    "cta": "About Me",
+    "latestFromBlog": "Latest from the blog",
+    "latestRepositories": "Latest repositories"
+  },
+  "about": {
+    "title": "About",
+    "description": "Meet Aman Surushe, Software Engineer from Nagpur, Maharashtra",
+    "introduction": "I'm a passionate software engineer with expertise in full-stack development.",
+    "experience": "Experience",
+    "skills": "Skills",
+    "education": "Education",
+    "languages": "Languages"
+  },
+  "work": {
+    "title": "Work",
+    "description": "Explore my professional projects and case studies",
+    "projects": "Projects",
+    "viewProject": "View Project",
+    "technologies": "Technologies"
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Insights and learnings from my development journey",
+    "readMore": "Read More",
+    "publishedOn": "Published on",
+    "readTime": "min read"
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "description": "I'd love to hear from you. Send me a message and I'll respond as soon as possible.",
+    "form": {
+      "name": "Your Name",
+      "email": "your.email@example.com",
+      "message": "Your message...",
+      "send": "Send Message",
+      "sending": "Sending...",
+      "success": "Thank you for your message!",
+      "successDescription": "I'll get back to you as soon as possible.",
+      "sendAnother": "Send another message",
+      "required": "All fields are required",
+      "invalidEmail": "Please enter a valid email address"
+    },
+    "otherWays": "Other ways to reach me:",
+    "email": "Email",
+    "location": "Location",
+    "languages": "Languages"
+  },
+  "testimonials": {
+    "title": "Client Testimonials",
+    "description": "What colleagues and clients say about working with me",
+    "previous": "Previous",
+    "next": "Next"
+  },
+  "search": {
+    "title": "Search",
+    "description": "Find projects, blog posts, and content across my portfolio",
+    "placeholder": "Search projects and blog posts...",
+    "searching": "Searching...",
+    "noResults": "No results found for",
+    "noResultsDescription": "Try searching for projects, blog posts, or technologies",
+    "results": "result",
+    "resultsPlural": "results",
+    "found": "found",
+    "tips": "Search Tips:",
+    "tip1": "Try searching for technologies: \"React\", \"Node.js\", \"TypeScript\"",
+    "tip2": "Look for project types: \"API\", \"management system\", \"platform\"",
+    "tip3": "Search topics: \"best practices\", \"scalable\", \"development\""
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "tryAgain": "Try Again",
+    "goHome": "Go Home",
+    "learnMore": "Learn More",
+    "viewAll": "View All",
+    "showMore": "Show More",
+    "showLess": "Show Less",
+    "close": "Close",
+    "open": "Open"
+  },
+  "seo": {
+    "homeTitle": "Aman Surushe - Full-Stack Software Engineer",
+    "homeDescription": "Experienced software engineer specializing in React, Node.js, and scalable web applications. Based in Nagpur, Maharashtra."
+  }
+}
