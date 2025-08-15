@@ -1,17 +1,19 @@
-# **Magic Portfolio by Once UI**
+# **Aman Surushe - Portfolio & Blog**
 
-View the [demo here](https://demo.magic-portfolio.com).
+Full-Stack Engineer passionate about building scalable solutions with React.js, Node.js, and modern web technologies.
 
-![Magic Portfolio](https://demo.magic-portfolio.com/images/og/home.jpg)
+🌐 **Live Site**: Coming soon at aman.surushe.com  
+📧 **Contact**: aamansurushe@gmail.com  
+🔗 **GitHub**: [AmanSurushe](https://github.com/AmanSurushe)
 
 
 # **Getting started**
 
-Magic Portfolio was built with [Once UI](https://once-ui.com) for [Next.js](https://nextjs.org). It requires Node.js v18.17+.
+This portfolio was built with [Once UI](https://once-ui.com) for [Next.js](https://nextjs.org) and features advanced functionality including PWA support, contact forms, and GitHub integration.
 
 **1. Clone the repository**
 ```
-git clone https://github.com/once-ui-system/magic-portfolio.git
+git clone https://github.com/AmanSurushe/my_website.git
 ```
 
 **2. Install dependencies**
@@ -19,24 +21,25 @@ git clone https://github.com/once-ui-system/magic-portfolio.git
 npm install
 ```
 
-**3. Run dev server**
+**3. Set up environment variables**
+```
+cp .env.example .env.local
+# Add your Gmail credentials for contact form
+```
+
+**4. Run dev server**
 ```
 npm run dev
 ```
 
-**4. Edit config**
+**5. Edit config**
 ```
-src/app/resources/config
-```
-
-**5. Edit content**
-```
-src/app/resources/content
+src/resources/once-ui.config.js
 ```
 
-**6. Create blog posts / projects**
+**6. Edit content**
 ```
-Add a new .mdx file to src/app/blog/posts or src/app/work/projects
+src/resources/content.js
 ```
 
 # **Documentation**
@@ -45,50 +48,94 @@ Docs available at: [docs.once-ui.com](https://docs.once-ui.com/docs/magic-portfo
 
 # **Features**
 
-## **Once UI**
-- All tokens, components & features of [Once UI](https://once-ui.com)
+## **Portfolio Highlights**
+- **Full-Stack Development**: 3+ years experience with Node.js, React.js, TypeScript
+- **Real-time Systems**: Expertise in voice communications with Asterisk
+- **Scale**: Managed systems processing 1.2+ billion WhatsApp messages
+- **Performance**: Redis caching, database optimization, monitoring with Prometheus/Grafana
 
-## **SEO**
-- Automatic open-graph and X image generation with next/og
-- Automatic schema and metadata generation based on the content file
+## **Technical Stack**
+- **Frontend**: React.js, Next.js, TypeScript, Once UI, Framer Motion
+- **Backend**: Node.js, Express.js, RESTful APIs
+- **Databases**: MySQL, MongoDB, Redis
+- **DevOps**: Git workflows, performance monitoring, real-time systems
+- **Integrations**: GitHub API, Contact forms, PWA support
 
-## **Design**
-- Responsive layout optimized for all screen sizes
-- Timeless design without heavy animations and motion
-- Endless customization options through [data attributes](https://once-ui.com/docs/theming)
+## **Website Features**
+- **Contact Form**: Nodemailer integration with auto-reply functionality
+- **GitHub Integration**: Dynamic repository showcase with live stats
+- **PWA Support**: Service worker, manifest, offline functionality  
+- **Multi-language**: English, Hindi, Marathi localization
+- **Performance**: Optimized images, caching, security headers
+- **SEO**: Automatic schema generation, open-graph images
+- **Responsive**: Mobile-first design, optimized for all devices
 
-## **Content**
-- Render sections conditionally based on the content file
-- Enable or disable pages for blog, work, gallery and about / CV
-- Generate and display social links automatically
-- Set up password protection for URLs
+# **About Me**
 
-## **Localization**
-- A localized version of Magic Portfolio is available with the next-intl library
-- To use localization, switch to the 'i18n' branch
+**Aman Surushe** - Full-Stack Software Engineer  
+📍 Nagpur, Maharashtra, India  
+🎓 St. Vincent Pallotti College of Engineering & Technology  
+💼 Currently at Pinnacle Teleservices Pvt Ltd  
 
-# **Authors**
+## **Experience Highlights**
+- **Pinnacle Teleservices** (Dec 2023 - Present): Voice solutions, WhatsApp campaigns, real-time monitoring
+- **St. Vincent Pallotti College** (Nov 2022 - Dec 2023): Campus management systems, automation
+- **Oxybills Services** (May 2022 - Aug 2022): Backend development, MVC architecture
 
-Connect with us on Threads or LinkedIn.
+## **Contact & Connect**
+- 📧 Email: [aamansurushe@gmail.com](mailto:aamansurushe@gmail.com)
+- 💼 LinkedIn: [Connect with me](https://linkedin.com/in/aman-surushe)
+- 🐙 GitHub: [@AmanSurushe](https://github.com/AmanSurushe)
+- 🌐 Portfolio: Coming soon at aman.surushe.com
 
-Lorant Toth: [Threads](https://www.threads.net/@lorant.one), [LinkedIn](https://www.linkedin.com/in/tothlorant/)  
-Zsofia Komaromi: [Threads](https://www.threads.net/@zsofia_kom), [LinkedIn](https://www.linkedin.com/in/zsofiakomaromi/)
+## **Technologies & Interests**
+- Languages: English, Hindi, Marathi
+- Passionate about scalable backend systems and modern frontend experiences
+- Always exploring new technologies and best practices
 
-Localization added by [François Hernandez](https://github.com/francoishernandez)
+# **Setup Instructions**
 
-# **Get involved**
+## **Contact Form Setup**
+The portfolio includes a fully functional contact form with email integration:
 
-- Join the [Design Engineers Club on Discord](https://discord.com/invite/5EyAQ4eNdS) and share your portfolio with us!
-- Report a [bug](https://github.com/once-ui-system/magic-portfolio/issues/new?labels=bug&template=bug_report.md).
+1. **Copy environment template:**
+   ```bash
+   cp .env.example .env.local
+   ```
 
-# **License**
+2. **Configure Gmail App Password:**
+   - Enable 2-Factor Authentication on your Gmail
+   - Generate App Password: [Google App Passwords](https://myaccount.google.com/apppasswords)
+   - Update `.env.local` with your credentials
 
-Distributed under the CC BY-NC 4.0 License.
-- Commercial usage is not allowed.
-- Attribution is required.
-- You can extend the license to commercial use by purchasing a [Once UI Pro](https://once-ui.com/pricing) license.
+3. **See detailed setup guides:**
+   - `NODEMAILER_SETUP.md` - Current email setup (recommended)
+   - `EMAILJS_SETUP.md` - Alternative client-side setup
 
-See `LICENSE.txt` for more information.
+## **Deployment**
 
-# **Deploy with Vercel**
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fonce-ui-system%2Fmagic-portfolio&project-name=portfolio&repository-name=portfolio&redirect-url=https%3A%2F%2Fgithub.com%2Fonce-ui-system%2Fmagic-portfolio&demo-title=Magic%20Portfolio&demo-description=Showcase%20your%20designers%20or%20developer%20portfolio&demo-url=https%3A%2F%2Fdemo.magic-portfolio.com&demo-image=%2F%2Fraw.githubusercontent.com%2Fonce-ui-system%2Fmagic-portfolio%2Fmain%2Fpublic%2Fimages%2Fog%2Fhome.jpg)
+### **Vercel (Recommended)**
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FAmanSurushe%2Fmy_website)
+
+1. Import project from GitHub
+2. Add environment variables in Vercel dashboard
+3. Deploy automatically
+
+### **Other Platforms**
+- **Netlify**: Add env vars in Site settings
+- **Railway**: Set variables in project dashboard  
+- **Self-hosted**: Ensure Node.js 18+ and set environment variables
+
+# **License & Attribution**
+
+Built with [Magic Portfolio](https://github.com/once-ui-system/magic-portfolio) by Once UI.  
+Distributed under CC BY-NC 4.0 License - see `LICENSE.txt` for details.
+
+**Template Credits:**
+- [Once UI](https://once-ui.com) design system
+- Original authors: Lorant Toth, Zsofia Komaromi
+- Localization: François Hernandez
+
+---
+
+⭐ **Star this repo if you find it useful!**
