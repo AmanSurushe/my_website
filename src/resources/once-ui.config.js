@@ -10,7 +10,9 @@ const routes = {
   "/repositories": true,
   "/blog": true,
   "/contact": true,
-  "/gallery": true,
+  "/gallery": false, // Moved to be accessible via other sections
+  "/testimonials": false, // Can be embedded in about or home page
+  "/demos": false, // Can be shown in work section
 };
 
 const display = {

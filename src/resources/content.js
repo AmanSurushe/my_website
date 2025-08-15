@@ -271,4 +271,18 @@ const contact = {
   description: `Get in touch with ${person.name}`,
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery, repositories, contact };
+const testimonials = {
+  path: "/testimonials",
+  label: "Testimonials", 
+  title: `Testimonials – ${person.name}`,
+  description: `Client testimonials and recommendations for ${person.name}`,
+};
+
+const demos = {
+  path: "/demos",
+  label: "Demos",
+  title: `Interactive Demos – ${person.name}`,
+  description: `Interactive project demonstrations and live previews by ${person.name}`,
+};
+
+export { person, social, newsletter, home, about, blog, work, gallery, repositories, contact, testimonials, demos };

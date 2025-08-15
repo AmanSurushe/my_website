@@ -4,6 +4,26 @@ import { useEffect, useState } from 'react';
 import { Column, Text, Badge, Flex, Button } from '@once-ui-system/core';
 import { AnimatedCard } from '@/components';
 
+// Hook to detect mobile devices
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+
+    return () => {
+      window.removeEventListener('resize', checkIsMobile);
+    };
+  }, []);
+
+  return isMobile;
+};
+
 interface PerformanceMetrics {
   fcp: number; // First Contentful Paint
   lcp: number; // Largest Contentful Paint
@@ -25,6 +45,7 @@ export function PerformanceMonitor() {
   const [metrics, setMetrics] = useState<PerformanceMetrics | null>(null);
   const [connection, setConnection] = useState<ConnectionInfo | null>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const measurePerformance = () => {
@@ -113,7 +134,7 @@ export function PerformanceMonitor() {
     return value.toString();
   };
 
-  if (!metrics || process.env.NODE_ENV === 'production') {
+  if (!metrics || process.env.NODE_ENV === 'production' || isMobile) {
     return null;
   }
 

@@ -5,9 +5,29 @@ import { useEffect, useState } from "react";
 
 import { Fade, Flex, Line, ToggleButton } from "@once-ui-system/core";
 
-import { routes, display, person, about, blog, work, gallery, repositories, contact } from "@/resources";
+import { routes, display, person, about, blog, work, gallery, repositories, contact, testimonials, demos } from "@/resources";
 import { ThemeToggle } from "./ThemeToggle";
 import styles from "./Header.module.scss";
+
+// Hook to detect screen size
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+
+    return () => {
+      window.removeEventListener('resize', checkIsMobile);
+    };
+  }, []);
+
+  return isMobile;
+};
 
 type TimeDisplayProps = {
   timeZone: string;
@@ -44,6 +64,7 @@ export default TimeDisplay;
 
 export const Header = () => {
   const pathname = usePathname() ?? "";
+  const isMobile = useIsMobile();
 
   return (
     <>
@@ -79,120 +100,45 @@ export const Header = () => {
               )}
               <Line background="neutral-alpha-medium" vert maxHeight="24" />
               {routes["/about"] && (
-                <>
-                  <ToggleButton
-                    className="s-flex-hide"
-                    prefixIcon="person"
-                    href="/about"
-                    label={about.label}
-                    selected={pathname === "/about"}
-                  />
-                  <ToggleButton
-                    className="s-flex-show"
-                    prefixIcon="person"
-                    href="/about"
-                    selected={pathname === "/about"}
-                  />
-                </>
+                <ToggleButton
+                  prefixIcon="person"
+                  href="/about"
+                  label={isMobile ? undefined : about.label}
+                  selected={pathname === "/about"}
+                />
               )}
               {routes["/work"] && (
-                <>
-                  <ToggleButton
-                    className="s-flex-hide"
-                    prefixIcon="grid"
-                    href="/work"
-                    label={work.label}
-                    selected={pathname.startsWith("/work")}
-                  />
-                  <ToggleButton
-                    className="s-flex-show"
-                    prefixIcon="grid"
-                    href="/work"
-                    selected={pathname.startsWith("/work")}
-                  />
-                </>
+                <ToggleButton
+                  prefixIcon="grid"
+                  href="/work"
+                  label={isMobile ? undefined : work.label}
+                  selected={pathname.startsWith("/work")}
+                />
               )}
               {routes["/repositories"] && (
-                <>
-                  <ToggleButton
-                    className="s-flex-hide"
-                    prefixIcon="github"
-                    href="/repositories"
-                    label={repositories.label}
-                    selected={pathname.startsWith("/repositories")}
-                  />
-                  <ToggleButton
-                    className="s-flex-show"
-                    prefixIcon="github"
-                    href="/repositories"
-                    selected={pathname.startsWith("/repositories")}
-                  />
-                </>
+                <ToggleButton
+                  prefixIcon="github"
+                  href="/repositories"
+                  label={isMobile ? undefined : repositories.label}
+                  selected={pathname.startsWith("/repositories")}
+                />
               )}
               {routes["/blog"] && (
-                <>
-                  <ToggleButton
-                    className="s-flex-hide"
-                    prefixIcon="book"
-                    href="/blog"
-                    label={blog.label}
-                    selected={pathname.startsWith("/blog")}
-                  />
-                  <ToggleButton
-                    className="s-flex-show"
-                    prefixIcon="book"
-                    href="/blog"
-                    selected={pathname.startsWith("/blog")}
-                  />
-                </>
+                <ToggleButton
+                  prefixIcon="book"
+                  href="/blog"
+                  label={isMobile ? undefined : blog.label}
+                  selected={pathname.startsWith("/blog")}
+                />
               )}
               {routes["/contact"] && (
-                <>
-                  <ToggleButton
-                    className="s-flex-hide"
-                    prefixIcon="email"
-                    href="/contact"
-                    label={contact.label}
-                    selected={pathname.startsWith("/contact")}
-                  />
-                  <ToggleButton
-                    className="s-flex-show"
-                    prefixIcon="email"
-                    href="/contact"
-                    selected={pathname.startsWith("/contact")}
-                  />
-                </>
+                <ToggleButton
+                  prefixIcon="email"
+                  href="/contact"
+                  label={isMobile ? undefined : contact.label}
+                  selected={pathname.startsWith("/contact")}
+                />
               )}
-              {routes["/gallery"] && (
-                <>
-                  <ToggleButton
-                    className="s-flex-hide"
-                    prefixIcon="gallery"
-                    href="/gallery"
-                    label={gallery.label}
-                    selected={pathname.startsWith("/gallery")}
-                  />
-                  <ToggleButton
-                    className="s-flex-show"
-                    prefixIcon="gallery"
-                    href="/gallery"
-                    selected={pathname.startsWith("/gallery")}
-                  />
-                </>
-              )}
-              <ToggleButton
-                className="s-flex-hide"
-                prefixIcon="star"
-                href="/testimonials"
-                label="Testimonials"
-                selected={pathname === "/testimonials"}
-              />
-              <ToggleButton
-                className="s-flex-show"
-                prefixIcon="star"
-                href="/testimonials"
-                selected={pathname === "/testimonials"}
-              />
               <Line background="neutral-alpha-medium" vert maxHeight="24" />
               <ToggleButton
                 prefixIcon="search"

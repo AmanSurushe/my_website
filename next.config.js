@@ -17,6 +17,7 @@ const nextConfig = {
       'github.com',
       'avatars.githubusercontent.com',
       'raw.githubusercontent.com',
+      'api.dicebear.com',
     ],
     remotePatterns: [
       {
@@ -31,6 +32,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'raw.githubusercontent.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'api.dicebear.com',
+      },
     ],
     minimumCacheTTL: 60,
     dangerouslyAllowSVG: true,
@@ -41,6 +46,23 @@ const nextConfig = {
   // Enable experimental features
   experimental: {
     optimizePackageImports: ['@once-ui-system/core'],
+  },
+  // Redirect HTTP to HTTPS in production
+  async redirects() {
+    return process.env.NODE_ENV === 'production' ? [
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'header',
+            key: 'x-forwarded-proto',
+            value: 'http',
+          },
+        ],
+        destination: 'https://:path*',
+        permanent: true,
+      },
+    ] : [];
   },
   // Security headers
   async headers() {
@@ -59,6 +81,18 @@ const nextConfig = {
           {
             key: 'Referrer-Policy',
             value: 'origin-when-cross-origin',
+          },
+          {
+            key: 'X-DNS-Prefetch-Control',
+            value: 'on',
+          },
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=63072000; includeSubDomains; preload',
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=(), browsing-topics=()',
           },
         ],
       },

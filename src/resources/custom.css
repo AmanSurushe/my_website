@@ -80,3 +80,5 @@
   outline: 2px solid var(--brand-background-strong);
   outline-offset: 2px;
 }
+
+/* Responsive navigation now handled by React hooks in Header component */

@@ -2,7 +2,7 @@ import React from "react";
 
 import { Heading, Flex, Text, Button, Avatar, RevealFx, Column, Badge, Row, Meta, Schema } from "@once-ui-system/core";
 import { home, about, person, newsletter, baseURL, routes, repositories } from "@/resources";
-import { Mailchimp, Repositories, FadeInWhenVisible, StaggerContainer } from "@/components";
+import { Mailchimp, Repositories, FadeInWhenVisible, StaggerContainer, Testimonials } from "@/components";
 import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
 
@@ -97,6 +97,18 @@ export default function Home() {
           </Flex>
         </FadeInWhenVisible>
       )}
+      <FadeInWhenVisible delay={0.4}>
+        <Flex fillWidth gap="24" direction="column">
+          <Flex flex={1} paddingLeft="l" paddingTop="24">
+            <Heading as="h2" variant="display-strong-xs" wrap="balance">
+              Client testimonials
+            </Heading>
+          </Flex>
+          <Flex flex={3} paddingX="20">
+            <Testimonials maxDisplay={3} showPagination={false} />
+          </Flex>
+        </Flex>
+      </FadeInWhenVisible>
       {newsletter.display && <Mailchimp newsletter={newsletter} />}
     </Column>
   );
