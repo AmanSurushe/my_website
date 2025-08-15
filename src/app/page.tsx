@@ -98,16 +98,7 @@ export default function Home() {
         </FadeInWhenVisible>
       )}
       <FadeInWhenVisible delay={0.4}>
-        <Flex fillWidth gap="24" direction="column">
-          <Flex flex={1} paddingLeft="l" paddingTop="24">
-            <Heading as="h2" variant="display-strong-xs" wrap="balance">
-              Client testimonials
-            </Heading>
-          </Flex>
-          <Flex flex={3} paddingX="20">
-            <Testimonials maxDisplay={3} showPagination={false} />
-          </Flex>
-        </Flex>
+        <Testimonials maxDisplay={3} showPagination={false} />
       </FadeInWhenVisible>
       {newsletter.display && <Mailchimp newsletter={newsletter} />}
     </Column>

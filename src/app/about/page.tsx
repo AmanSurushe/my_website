@@ -35,6 +35,11 @@ export default function About() {
       items: [],
     },
     {
+      title: about.achievements.title,
+      display: about.achievements.display,
+      items: about.achievements.highlights.map((highlight) => highlight.title),
+    },
+    {
       title: about.work.title,
       display: about.work.display,
       items: about.work.experiences.map((experience) => experience.company),
@@ -77,16 +82,14 @@ export default function About() {
           <TableOfContents structure={structure} about={about} />
         </Column>
       )}
-      <Flex fillWidth direction="column" horizontal="center">
+      <Flex fillWidth className={styles.aboutContainer}>
         {about.avatar.display && (
           <Column
-            className={styles.avatar}
-            position="sticky"
-            minWidth="160"
-            paddingX="l"
-            paddingBottom="xl"
+            className={styles.sidebar}
+            minWidth="280"
+            paddingX="m"
+            paddingY="xl"
             gap="m"
-            flex={3}
             horizontal="center"
           >
             <Avatar src={person.avatar} size="xl" />
@@ -105,7 +108,7 @@ export default function About() {
             )}
           </Column>
         )}
-        <Column className={styles.blockAlign} flex={9} maxWidth={40}>
+        <Column className={styles.content} flex={1} paddingX="l">
           <Column
             id={about.intro.title}
             fillWidth
@@ -153,26 +156,13 @@ export default function About() {
                 {social.map(
                   (item) =>
                     item.link && (
-                        <React.Fragment key={item.name}>
-                            <Button
-                                className="s-flex-hide"
-                                key={item.name}
-                                href={item.link}
-                                prefixIcon={item.icon}
-                                label={item.name}
-                                size="s"
-                                weight="default"
-                                variant="secondary"
-                            />
-                            <IconButton
-                                className="s-flex-show"
-                                size="l"
-                                key={`${item.name}-icon`}
-                                href={item.link}
-                                icon={item.icon}
-                                variant="secondary"
-                            />
-                        </React.Fragment>
+                      <IconButton
+                        key={item.name}
+                        size="l"
+                        href={item.link}
+                        icon={item.icon}
+                        variant="secondary"
+                      />
                     ),
                 )}
               </Flex>
@@ -180,9 +170,36 @@ export default function About() {
           </Column>
 
           {about.intro.display && (
-            <Column textVariant="body-default-l" fillWidth gap="m" marginBottom="xl">
-              {about.intro.description}
+            <Column fillWidth gap="m" marginBottom="xl" style={{ textAlign: 'left' }}>
+              <Text variant="body-default-l" style={{ lineHeight: '1.6', maxWidth: '100%' }}>
+                {about.intro.description}
+              </Text>
             </Column>
+          )}
+
+          {about.achievements.display && (
+            <>
+              <Heading as="h2" id={about.achievements.title} variant="display-strong-s" marginBottom="m">
+                {about.achievements.title}
+              </Heading>
+              <Column fillWidth gap="l" marginBottom="40">
+                {about.achievements.highlights.map((highlight, index) => (
+                  <Flex key={index} fillWidth direction="column" gap="8" padding="20" background="neutral-alpha-weak" radius="m" border="neutral-alpha-medium">
+                    <Flex fillWidth horizontal="between" vertical="center">
+                      <Text variant="heading-strong-l" id={highlight.title}>
+                        {highlight.title}
+                      </Text>
+                      <Text variant="heading-strong-m" onBackground="accent-strong">
+                        {highlight.metric}
+                      </Text>
+                    </Flex>
+                    <Text variant="body-default-m" onBackground="neutral-medium">
+                      {highlight.description}
+                    </Text>
+                  </Flex>
+                ))}
+              </Column>
+            </>
           )}
 
           {about.work.display && (
