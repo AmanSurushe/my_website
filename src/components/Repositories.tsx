@@ -217,7 +217,7 @@ export function Repositories({ username, maxRepos, showFilters = true }: Reposit
             </Text>
             {searchTerm && (
               <Text variant="label-default-s" onBackground="neutral-medium">
-                matching "{searchTerm}"
+                matching &quot;{searchTerm}&quot;
               </Text>
             )}
             {selectedLanguage !== 'all' && (

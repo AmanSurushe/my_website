@@ -203,7 +203,7 @@ export function SearchBox({ onClose, isVisible = true }: SearchBoxProps) {
           ) : (
             <Flex direction="column" gap="8" horizontal="center" paddingY="24">
               <Text variant="body-default-s" onBackground="neutral-weak">
-                No results found for "{query}"
+                No results found for &quot;{query}&quot;
               </Text>
               <Text variant="body-default-xs" onBackground="neutral-weak">
                 Try searching for projects, blog posts, or technologies

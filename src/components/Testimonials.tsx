@@ -136,7 +136,7 @@ export function Testimonials({ maxDisplay = 3, showPagination = true }: Testimon
                 </Flex>
                 
                 <Text variant="body-default-m" onBackground="neutral-medium">
-                  "{testimonial.content}"
+                  &quot;{testimonial.content}&quot;
                 </Text>
               </Flex>
             </AnimatedCard>

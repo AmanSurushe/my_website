@@ -128,7 +128,7 @@ export function AdvancedContactForm({ onSubmit, className }: AdvancedContactForm
             Thank You!
           </Text>
           <Text variant="body-default-m" onBackground="neutral-medium" horizontal="center">
-            Your message has been sent successfully. I'll get back to you within 24 hours.
+            Your message has been sent successfully. I&apos;ll get back to you within 24 hours.
           </Text>
           <Button variant="secondary" onClick={resetForm}>
             Send Another Message

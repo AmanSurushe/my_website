@@ -28,7 +28,7 @@ export default function NotFound() {
             
             <AnimatedCard delay={0.8} direction="left">
               <Text onBackground="neutral-weak" style={{ textAlign: 'center' }}>
-                The page you're looking for doesn't exist or has been moved.
+                The page you&apos;re looking for doesn&apos;t exist or has been moved.
               </Text>
             </AnimatedCard>
           </Column>

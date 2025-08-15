@@ -48,13 +48,13 @@ export default function SearchPage() {
           </Text>
           <Column gap="8">
             <Text variant="body-default-m" onBackground="neutral-medium">
-              • Try searching for technologies: "React", "Node.js", "TypeScript"
+              • Try searching for technologies: &quot;React&quot;, &quot;Node.js&quot;, &quot;TypeScript&quot;
             </Text>
             <Text variant="body-default-m" onBackground="neutral-medium">
-              • Look for project types: "API", "management system", "platform"
+              • Look for project types: &quot;API&quot;, &quot;management system&quot;, &quot;platform&quot;
             </Text>
             <Text variant="body-default-m" onBackground="neutral-medium">
-              • Search topics: "best practices", "scalable", "development"
+              • Search topics: &quot;best practices&quot;, &quot;scalable&quot;, &quot;development&quot;
             </Text>
           </Column>
         </Column>

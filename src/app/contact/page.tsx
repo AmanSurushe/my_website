@@ -81,7 +81,7 @@ export default function ContactPage() {
             Get in Touch
           </Heading>
           <Text variant="heading-default-xl" onBackground="neutral-weak">
-            I'd love to hear from you. Send me a message and I'll respond as soon as possible.
+            I&apos;d love to hear from you. Send me a message and I&apos;ll respond as soon as possible.
           </Text>
         </Column>
 
@@ -91,7 +91,7 @@ export default function ContactPage() {
               Thank you for your message!
             </Heading>
             <Text variant="body-default-m" onBackground="neutral-medium">
-              I'll get back to you as soon as possible.
+              I&apos;ll get back to you as soon as possible.
             </Text>
             <Button 
               variant="secondary" 
