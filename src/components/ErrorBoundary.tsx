@@ -53,13 +53,13 @@ function DefaultErrorFallback({ error, resetError }: { error?: Error; resetError
           
           <Column gap="12" horizontal="center">
             <AnimatedCard delay={0.4} direction="down">
-              <Heading as="h1" variant="display-strong-l" horizontal="center">
+              <Heading as="h1" variant="display-strong-l" style={{ textAlign: 'center' }}>
                 Something went wrong
               </Heading>
             </AnimatedCard>
             
             <AnimatedCard delay={0.6} direction="up">
-              <Text onBackground="neutral-weak" horizontal="center">
+              <Text onBackground="neutral-weak" style={{ textAlign: 'center' }}>
                 {error?.message || 'An unexpected error occurred. Please try again.'}
               </Text>
             </AnimatedCard>

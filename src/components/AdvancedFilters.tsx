@@ -108,7 +108,7 @@ export function AdvancedFilters({
         {/* Quick Actions */}
         <Flex horizontal="between" vertical="center" gap="8">
           <Button
-            variant="ghost"
+            variant="secondary"
             size="s"
             onClick={() => setIsExpanded(!isExpanded)}
           >
@@ -117,7 +117,7 @@ export function AdvancedFilters({
           
           <Flex gap="8" vertical="center">
             {hasActiveFilters && (
-              <Button variant="ghost" size="s" onClick={handleReset}>
+              <Button variant="secondary" size="s" onClick={handleReset}>
                 Clear All
               </Button>
             )}
@@ -126,14 +126,14 @@ export function AdvancedFilters({
               Sort by:
             </Text>
             <Button
-              variant={filters.sortBy === 'date' ? 'secondary' : 'ghost'}
+              variant={filters.sortBy === 'date' ? 'secondary' : 'tertiary'}
               size="s"
               onClick={() => setFilters(prev => ({ ...prev, sortBy: 'date' }))}
             >
               Date
             </Button>
             <Button
-              variant={filters.sortBy === 'title' ? 'secondary' : 'ghost'}
+              variant={filters.sortBy === 'title' ? 'secondary' : 'tertiary'}
               size="s"
               onClick={() => setFilters(prev => ({ ...prev, sortBy: 'title' }))}
             >
@@ -160,11 +160,11 @@ export function AdvancedFilters({
                       }
                       onBackground={
                         filters.categories.includes(category.value)
-                          ? 'brand-on-background-strong'
+                          ? 'brand-strong'
                           : 'neutral-strong'
                       }
-                      paddingX="8"
-                      paddingY="4"
+                      paddingX="xs"
+                      paddingY="xs"
                       style={{ cursor: 'pointer' }}
                       onClick={() => handleCategoryToggle(category.value)}
                     >
@@ -191,11 +191,11 @@ export function AdvancedFilters({
                       }
                       onBackground={
                         filters.tags.includes(tag.value)
-                          ? 'accent-on-background-strong'
+                          ? 'accent-strong'
                           : 'neutral-strong'
                       }
-                      paddingX="8"
-                      paddingY="4"
+                      paddingX="xs"
+                      paddingY="xs"
                       style={{ cursor: 'pointer' }}
                       onClick={() => handleTagToggle(tag.value)}
                     >
@@ -253,9 +253,9 @@ export function AdvancedFilters({
                 <Badge
                   key={`active-cat-${category}`}
                   background="brand-alpha-strong"
-                  onBackground="brand-on-background-strong"
-                  paddingX="6"
-                  paddingY="2"
+                  onBackground="brand-strong"
+                  paddingX="xs"
+                  paddingY="xs"
                   style={{ cursor: 'pointer' }}
                   onClick={() => handleCategoryToggle(category)}
                 >
@@ -266,9 +266,9 @@ export function AdvancedFilters({
                 <Badge
                   key={`active-tag-${tag}`}
                   background="accent-alpha-strong"
-                  onBackground="accent-on-background-strong"
-                  paddingX="6"
-                  paddingY="2"
+                  onBackground="accent-strong"
+                  paddingX="xs"
+                  paddingY="xs"
                   style={{ cursor: 'pointer' }}
                   onClick={() => handleTagToggle(tag)}
                 >

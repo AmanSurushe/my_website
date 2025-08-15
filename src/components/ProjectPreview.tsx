@@ -102,8 +102,8 @@ export function ProjectPreview({ maxDisplay = 3, showFilters = true }: ProjectPr
                   key={tech}
                   background="accent-alpha-weak"
                   onBackground="accent-strong"
-                  paddingX="8"
-                  paddingY="4"
+                  paddingX="xs"
+                  paddingY="xs"
                 >
                   {tech}
                 </Badge>
@@ -200,7 +200,7 @@ export function ProjectPreview({ maxDisplay = 3, showFilters = true }: ProjectPr
               {selectedProject.title}
             </Heading>
             <Button
-              variant="ghost"
+              variant="secondary"
               size="s"
               onClick={() => setSelectedProject(null)}
             >
@@ -222,10 +222,10 @@ export function ProjectPreview({ maxDisplay = 3, showFilters = true }: ProjectPr
     <Column fillWidth gap="24">
       <FadeInWhenVisible>
         <Column gap="12">
-          <Heading as="h2" variant="display-strong-s" horizontal="center">
+          <Heading as="h2" variant="display-strong-s" style={{ textAlign: "center" }}>
             Interactive Project Demos
           </Heading>
-          <Text variant="body-default-l" onBackground="neutral-weak" horizontal="center">
+          <Text variant="body-default-l" onBackground="neutral-weak" style={{ textAlign: "center" }}>
             Explore my projects with detailed previews and technical insights
           </Text>
         </Column>
@@ -233,7 +233,7 @@ export function ProjectPreview({ maxDisplay = 3, showFilters = true }: ProjectPr
 
       {showFilters && (
         <FadeInWhenVisible delay={0.2}>
-          <Flex horizontal="center" gap="8" wrap>
+          <Flex style={{ textAlign: "center" }} gap="8" wrap>
             {filters.map((filter) => (
               <Button
                 key={filter}
@@ -283,8 +283,8 @@ export function ProjectPreview({ maxDisplay = 3, showFilters = true }: ProjectPr
                     key={tech}
                     background="brand-alpha-weak"
                     onBackground="brand-strong"
-                    paddingX="6"
-                    paddingY="3"
+                    paddingX="xs"
+                    paddingY="xs"
                   >
                     {tech}
                   </Badge>
@@ -293,8 +293,8 @@ export function ProjectPreview({ maxDisplay = 3, showFilters = true }: ProjectPr
                   <Badge
                     background="neutral-alpha-weak"
                     onBackground="neutral-medium"
-                    paddingX="6"
-                    paddingY="3"
+                    paddingX="xs"
+                    paddingY="xs"
                   >
                     +{project.technologies.length - 4} more
                   </Badge>

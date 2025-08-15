@@ -22,7 +22,7 @@ const contactSchema = z.object({
     .optional(),
   
   subject: z.enum(['general', 'project', 'collaboration', 'job'], {
-    required_error: 'Please select a subject'
+    message: 'Please select a subject'
   }),
   
   priority: z.enum(['low', 'medium', 'high']).default('medium'),
@@ -259,7 +259,7 @@ export function AdvancedContactForm({ onSubmit, className }: AdvancedContactForm
                         background={field.value === option.value ? `${option.color}-strong` : 'neutral-alpha-weak'}
                         onBackground={field.value === option.value ? `${option.color}-on-background-strong` : 'neutral-strong'}
                         paddingX="12"
-                        paddingY="6"
+                        paddingY="xs"
                         style={{ cursor: 'pointer' }}
                         onClick={() => field.onChange(option.value)}
                       >

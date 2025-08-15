@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Column, Meta, Schema, Tabs, Text, Heading } from "@once-ui-system/core";
+import { Column, Meta, Schema, Text, Heading } from "@once-ui-system/core";
 import { SecurityHeaders } from '@/components/SecurityHeaders';
 import { PerformanceMonitor } from '@/components/PerformanceMonitor';
 import { baseURL, person } from "@/resources";
@@ -47,12 +47,12 @@ export default function DemosPage() {
           </Text>
         </Column>
 
-        <Tabs 
+        {/* <Tabs 
           fillWidth 
           tabs={tabs} 
           activeTab={activeTab} 
           onTabChange={setActiveTab}
-        />
+        /> */}
 
         <Column fillWidth>
           {activeTab === "security" && (

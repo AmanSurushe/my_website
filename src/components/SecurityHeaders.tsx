@@ -184,7 +184,7 @@ export function SecurityDashboard() {
       }}
     >
       <Button
-        variant="ghost"
+        variant="secondary"
         size="s"
         onClick={() => setIsVisible(!isVisible)}
         style={{
@@ -201,7 +201,7 @@ export function SecurityDashboard() {
           <Column
             gap="16"
             padding="16"
-            background="neutral-on-background-weak"
+            background="neutral-alpha-weak"
             radius="m"
             style={{
               backdropFilter: 'blur(10px)',
@@ -226,8 +226,8 @@ export function SecurityDashboard() {
                     <Badge
                       background={`${getStatusColor(check.status)}-alpha-weak`}
                       onBackground={`${getStatusColor(check.status)}-strong`}
-                      paddingX="6"
-                      paddingY="2"
+                      paddingX="xs"
+                      paddingY="xs"
                     >
                       {check.status.toUpperCase()}
                     </Badge>
@@ -256,8 +256,8 @@ export function SecurityDashboard() {
                       <Badge
                         background="danger-alpha-weak"
                         onBackground="danger-strong"
-                        paddingX="6"
-                        paddingY="2"
+                        paddingX="xs"
+                        paddingY="xs"
                       >
                         VIOLATION
                       </Badge>
@@ -292,8 +292,8 @@ export function SecurityDashboard() {
                   <Badge
                     background={`${getOverallScore()}-alpha-weak`}
                     onBackground={`${getOverallScore()}-strong`}
-                    paddingX="8"
-                    paddingY="4"
+                    paddingX="xs"
+                    paddingY="xs"
                   >
                     {Math.round((securityChecks.filter(c => c.status === 'pass').length / securityChecks.length) * 100)}%
                   </Badge>
@@ -335,3 +335,6 @@ export function SecurityDashboard() {
     return 'danger';
   }
 }
+
+// Export alias for backward compatibility
+export { SecurityDashboard as SecurityHeaders };

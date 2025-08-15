@@ -66,7 +66,7 @@ export function CodeBlock({
         horizontal="between"
         vertical="center"
         paddingX="16"
-        paddingY="8"
+        paddingY="xs"
         background="neutral-alpha-weak"
         style={{
           borderTopLeftRadius: '8px',
@@ -87,7 +87,7 @@ export function CodeBlock({
         
         <Flex gap="8">
           <Button
-            variant="ghost"
+            variant="secondary"
             size="s"
             onClick={() => setIsDark(!isDark)}
             aria-label="Toggle theme"
@@ -95,7 +95,7 @@ export function CodeBlock({
             {isDark ? '☀️' : '🌙'}
           </Button>
           <Button
-            variant="ghost"
+            variant="secondary"
             size="s"
             onClick={copyToClipboard}
             aria-label="Copy code"

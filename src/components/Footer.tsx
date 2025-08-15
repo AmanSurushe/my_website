@@ -16,7 +16,7 @@ export const Footer = () => {
       <Flex
         className={styles.mobile}
         maxWidth="m"
-        paddingY="8"
+        paddingY="xs"
         paddingX="16"
         gap="16"
         horizontal="between"
@@ -24,7 +24,7 @@ export const Footer = () => {
       >
         <Text variant="body-default-s" onBackground="neutral-strong">
           <Text onBackground="neutral-weak">© {currentYear} /</Text>
-          <Text paddingX="4">{person.name}</Text>
+          <Text paddingX="xs">{person.name}</Text>
           <Text onBackground="neutral-weak">
             {/* Usage of this template requires attribution. Please don't remove the link to Once UI. */}
             / Build your portfolio with{" "}
@@ -45,7 +45,7 @@ export const Footer = () => {
                   icon={item.icon}
                   tooltip={item.name}
                   size="s"
-                  variant="ghost"
+                  variant="secondary"
                 />
               ),
           )}

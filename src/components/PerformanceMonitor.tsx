@@ -92,7 +92,7 @@ export function PerformanceMonitor() {
         cls,
         fid,
         ttfb: navigation.responseStart - navigation.requestStart,
-        loadTime: navigation.loadEventEnd - navigation.navigationStart,
+        loadTime: navigation.loadEventEnd - navigation.startTime,
         domNodes: document.querySelectorAll('*').length,
         memoryUsed,
       });
@@ -149,7 +149,7 @@ export function PerformanceMonitor() {
       }}
     >
       <Button
-        variant="ghost"
+        variant="secondary"
         size="s"
         onClick={() => setIsVisible(!isVisible)}
         style={{
@@ -166,7 +166,7 @@ export function PerformanceMonitor() {
           <Column
             gap="12"
             padding="16"
-            background="neutral-on-background-weak"
+            background="neutral-alpha-weak"
             radius="m"
             style={{
               backdropFilter: 'blur(10px)',
@@ -184,8 +184,8 @@ export function PerformanceMonitor() {
                 <Badge
                   background={`${getScoreColor('fcp', metrics.fcp)}-alpha-weak`}
                   onBackground={`${getScoreColor('fcp', metrics.fcp)}-strong`}
-                  paddingX="6"
-                  paddingY="2"
+                  paddingX="xs"
+                  paddingY="xs"
                 >
                   {formatMetric(metrics.fcp, 'ms')}
                 </Badge>
@@ -196,8 +196,8 @@ export function PerformanceMonitor() {
                 <Badge
                   background={`${getScoreColor('lcp', metrics.lcp)}-alpha-weak`}
                   onBackground={`${getScoreColor('lcp', metrics.lcp)}-strong`}
-                  paddingX="6"
-                  paddingY="2"
+                  paddingX="xs"
+                  paddingY="xs"
                 >
                   {formatMetric(metrics.lcp, 'ms')}
                 </Badge>
@@ -208,8 +208,8 @@ export function PerformanceMonitor() {
                 <Badge
                   background={`${getScoreColor('ttfb', metrics.ttfb)}-alpha-weak`}
                   onBackground={`${getScoreColor('ttfb', metrics.ttfb)}-strong`}
-                  paddingX="6"
-                  paddingY="2"
+                  paddingX="xs"
+                  paddingY="xs"
                 >
                   {formatMetric(metrics.ttfb, 'ms')}
                 </Badge>

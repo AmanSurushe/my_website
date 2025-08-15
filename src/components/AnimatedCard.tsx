@@ -33,7 +33,6 @@ export function AnimatedCard({
       transition: {
         duration,
         delay,
-        ease: [0.25, 0.4, 0.55, 1.4],
       },
     },
   };

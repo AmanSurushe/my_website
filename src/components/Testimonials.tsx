@@ -80,10 +80,10 @@ export function Testimonials({ maxDisplay = 3, showPagination = true }: Testimon
     <Column fillWidth gap="24">
       <FadeInWhenVisible>
         <Column gap="8">
-          <Heading as="h2" variant="display-strong-s" horizontal="center">
+          <Heading as="h2" variant="display-strong-s" style={{ textAlign: "center" }}>
             Client Testimonials
           </Heading>
-          <Text variant="body-default-l" onBackground="neutral-weak" horizontal="center">
+          <Text variant="body-default-l" onBackground="neutral-weak" style={{ textAlign: "center" }}>
             What colleagues and clients say about working with me
           </Text>
         </Column>
@@ -146,7 +146,7 @@ export function Testimonials({ maxDisplay = 3, showPagination = true }: Testimon
 
       {showPagination && totalPages > 1 && (
         <FadeInWhenVisible delay={0.4}>
-          <Flex horizontal="center" gap="8" paddingTop="16">
+          <Flex style={{ textAlign: "center" }} gap="8" paddingTop="16">
             <Button
               variant="secondary"
               size="s"
@@ -160,7 +160,7 @@ export function Testimonials({ maxDisplay = 3, showPagination = true }: Testimon
               {Array.from({ length: totalPages }, (_, i) => (
                 <Button
                   key={i}
-                  variant={i === currentPage ? "primary" : "ghost"}
+                  variant={i === currentPage ? "primary" : "secondary"}
                   size="s"
                   onClick={() => setCurrentPage(i)}
                   style={{ minWidth: '32px' }}

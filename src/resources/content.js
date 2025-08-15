@@ -200,7 +200,7 @@ const about = {
   technical: {
     display: false, // set to false to hide this section
     title: "Technical Expertise",
-    skills: [],
+    skills: [], // Array<{ title: string, description: React.ReactNode, images: any[] }>
   },
   achievements: {
     display: true,

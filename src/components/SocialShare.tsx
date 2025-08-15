@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button, Flex, Text, Column } from '@once-ui-system/core';
 import { AnimatedCard } from '@/components';
 
@@ -81,6 +81,11 @@ const platforms: SharePlatform[] = [
 export function SocialShare({ url, title, description, hashtags, className }: SocialShareProps) {
   const [copied, setCopied] = useState(false);
   const [shareCount, setShareCount] = useState(shareStats.shares);
+  const [hasNativeShare, setHasNativeShare] = useState(false);
+
+  useEffect(() => {
+    setHasNativeShare(typeof navigator !== 'undefined' && !!navigator.share);
+  }, []);
 
   const handleShare = async (platform: SharePlatform) => {
     const shareUrl = platform.shareUrl({ url, title, description, hashtags });
@@ -131,18 +136,18 @@ export function SocialShare({ url, title, description, hashtags, className }: So
           {platforms.map((platform) => (
             <Button
               key={platform.name}
-              variant="ghost"
+              variant="secondary"
               size="s"
               onClick={() => handleShare(platform)}
               style={{
                 border: `1px solid ${platform.color}20`,
                 transition: 'all 0.2s ease',
               }}
-              onMouseEnter={(e) => {
+              onMouseEnter={(e: any) => {
                 e.currentTarget.style.backgroundColor = `${platform.color}10`;
                 e.currentTarget.style.borderColor = `${platform.color}40`;
               }}
-              onMouseLeave={(e) => {
+              onMouseLeave={(e: any) => {
                 e.currentTarget.style.backgroundColor = 'transparent';
                 e.currentTarget.style.borderColor = `${platform.color}20`;
               }}
@@ -165,7 +170,7 @@ export function SocialShare({ url, title, description, hashtags, className }: So
             {copied ? '✅ Copied!' : '📋 Copy Link'}
           </Button>
 
-          {navigator.share && (
+          {hasNativeShare && (
             <Button
               variant="secondary"
               size="s"

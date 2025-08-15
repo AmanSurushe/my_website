@@ -49,11 +49,11 @@ export default function About() {
       display: about.studies.display,
       items: about.studies.institutions.map((institution) => institution.name),
     },
-    {
+    ...(about.technical.display && about.technical.skills && about.technical.skills.length > 0 ? [{
       title: about.technical.title,
       display: about.technical.display,
-      items: about.technical.skills.map((skill) => skill.title),
-    },
+      items: about.technical.skills.map((skill: any) => skill.title),
+    }] : []),
   ];
   return (
     <Column maxWidth="m">
@@ -86,7 +86,7 @@ export default function About() {
         {about.avatar.display && (
           <Column
             className={styles.sidebar}
-            minWidth="280"
+            minWidth={280}
             paddingX="m"
             paddingY="xl"
             gap="m"
@@ -132,7 +132,7 @@ export default function About() {
                 vertical="center"
               >
                 <Icon paddingLeft="12" name="calendar" onBackground="brand-weak" />
-                <Flex paddingX="8">Schedule a call</Flex>
+                <Flex paddingX="xs">Schedule a call</Flex>
                 <IconButton
                   href={about.calendar.link}
                   data-border="rounded"
@@ -284,7 +284,7 @@ export default function About() {
             </>
           )}
 
-          {about.technical.display && (
+          {about.technical.display && about.technical.skills && about.technical.skills.length > 0 && (
             <>
               <Heading
                 as="h2"
@@ -295,7 +295,7 @@ export default function About() {
                 {about.technical.title}
               </Heading>
               <Column fillWidth gap="l">
-                {about.technical.skills.map((skill, index) => (
+                {about.technical.skills.map((skill: any, index: number) => (
                   <Column key={`${skill}-${index}`} fillWidth gap="4">
                     <Text id={skill.title} variant="heading-strong-l">{skill.title}</Text>
                     <Text variant="body-default-m" onBackground="neutral-weak">
@@ -303,7 +303,7 @@ export default function About() {
                     </Text>
                     {skill.images && skill.images.length > 0 && (
                       <Flex fillWidth paddingTop="m" gap="12" wrap>
-                        {skill.images.map((image, index) => (
+                        {skill.images.map((image: any, index: number) => (
                           <Flex
                             key={index}
                             border="neutral-medium"

@@ -33,7 +33,7 @@ export function LanguageSwitcher() {
   return (
     <div style={{ position: 'relative' }}>
       <Button
-        variant="ghost"
+        variant="secondary"
         size="s"
         onClick={() => setIsOpen(!isOpen)}
         disabled={isPending}
