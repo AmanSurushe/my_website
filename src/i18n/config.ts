@@ -20,6 +20,7 @@ export const localeFlags: Record<Locale, string> = {
 
 export default getRequestConfig(async ({ locale }) => {
   return {
-    messages: (await import(`./messages/${locale}.json`)).default
+    locale: locale || defaultLocale,
+    messages: (await import(`./messages/${locale || defaultLocale}.json`)).default
   };
 });

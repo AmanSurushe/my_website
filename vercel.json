@@ -1,6 +1,5 @@
 {
   "buildCommand": "npm run build",
-  "outputDirectory": "out",
   "framework": "nextjs",
   "regions": ["bom1", "sin1"],
   "headers": [

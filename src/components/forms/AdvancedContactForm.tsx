@@ -57,6 +57,38 @@ const priorityOptions = [
   { value: 'high', label: 'High', color: 'danger' },
 ];
 
+const getPriorityColors = (priority: string, isSelected: boolean) => {
+  if (!isSelected) {
+    return {
+      background: 'neutral-alpha-weak' as const,
+      onBackground: 'neutral-strong' as const
+    };
+  }
+  
+  switch (priority) {
+    case 'low':
+      return {
+        background: 'neutral-strong' as const,
+        onBackground: 'neutral-strong' as const
+      };
+    case 'medium':
+      return {
+        background: 'accent-strong' as const,
+        onBackground: 'accent-strong' as const
+      };
+    case 'high':
+      return {
+        background: 'danger-strong' as const,
+        onBackground: 'danger-strong' as const
+      };
+    default:
+      return {
+        background: 'neutral-alpha-weak' as const,
+        onBackground: 'neutral-strong' as const
+      };
+  }
+};
+
 interface AdvancedContactFormProps {
   onSubmit?: (data: ContactFormData) => Promise<void>;
   className?: string;
@@ -73,7 +105,7 @@ export function AdvancedContactForm({ onSubmit, className }: AdvancedContactForm
     formState: { errors, isValid, touchedFields },
     watch,
     reset,
-  } = useForm<ContactFormData>({
+  } = useForm({
     resolver: zodResolver(contactSchema),
     mode: 'onBlur',
     defaultValues: {
@@ -124,10 +156,10 @@ export function AdvancedContactForm({ onSubmit, className }: AdvancedContactForm
     return (
       <AnimatedCard className={className}>
         <Column fillWidth gap="16" paddingY="24">
-          <Text variant="heading-strong-m" onBackground="accent-strong" horizontal="center">
+          <Text variant="heading-strong-m" onBackground="accent-strong" style={{ textAlign: 'center' }}>
             Thank You!
           </Text>
-          <Text variant="body-default-m" onBackground="neutral-medium" horizontal="center">
+          <Text variant="body-default-m" onBackground="neutral-medium" style={{ textAlign: 'center' }}>
             Your message has been sent successfully. I&apos;ll get back to you within 24 hours.
           </Text>
           <Button variant="secondary" onClick={resetForm}>
@@ -256,8 +288,8 @@ export function AdvancedContactForm({ onSubmit, className }: AdvancedContactForm
                     {priorityOptions.map((option) => (
                       <Badge
                         key={option.value}
-                        background={field.value === option.value ? `${option.color}-strong` : 'neutral-alpha-weak'}
-                        onBackground={field.value === option.value ? `${option.color}-on-background-strong` : 'neutral-strong'}
+                        background={getPriorityColors(option.value, field.value === option.value).background}
+                        onBackground={getPriorityColors(option.value, field.value === option.value).onBackground}
                         paddingX="12"
                         paddingY="xs"
                         style={{ cursor: 'pointer' }}
