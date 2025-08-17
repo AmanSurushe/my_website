@@ -170,6 +170,7 @@ export function ProjectPreview({ maxDisplay = 3, showFilters = true }: ProjectPr
         return (
           <Flex gap="8" wrap>
             {project.screenshots?.map((screenshot, index) => (
+              // eslint-disable-next-line @next/next/no-img-element
               <img
                 key={index}
                 src={screenshot}

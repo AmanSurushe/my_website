@@ -42,7 +42,7 @@ export function Repositories({ username, maxRepos, showFilters = true }: Reposit
     }
 
     loadRepositories();
-  }, [username]);
+  }, [username, sortBy]);
 
   const languages = useMemo(() => {
     const langSet = new Set<string>();

@@ -6,7 +6,10 @@
     "export": "next export",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint:strict": "next lint --max-warnings 0",
+    "typecheck": "tsc --noEmit",
+    "ci": "npm run lint:strict && npm run typecheck && npm run build"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
