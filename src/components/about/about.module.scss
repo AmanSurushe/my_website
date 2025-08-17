@@ -76,4 +76,31 @@
     .blockAlign {
         align-self: center;
     }
+
+    .tableOfContents {
+        display: none !important;
+    }
+
+    .tableOfContentsInner {
+        display: none !important;
+    }
+
+    .subItem {
+        display: none !important;
+    }
+}
+
+// Desktop-only table of contents visibility
+@media (min-width: breakpoints.$s + 1px) {
+    .tableOfContents {
+        display: flex !important;
+    }
+
+    .tableOfContentsInner {
+        display: flex !important;
+    }
+
+    .subItem {
+        display: flex !important;
+    }
 }

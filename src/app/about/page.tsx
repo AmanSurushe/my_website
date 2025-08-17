@@ -77,7 +77,7 @@ export default function About() {
           position="fixed"
           paddingLeft="24"
           gap="32"
-          hide
+          className={styles.tableOfContents}
         >
           <TableOfContents structure={structure} about={about} />
         </Column>
