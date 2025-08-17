@@ -82,16 +82,9 @@ export default function About() {
           <TableOfContents structure={structure} about={about} />
         </Column>
       )}
-      <Flex fillWidth className={styles.aboutContainer}>
+      <div className={styles.aboutContainer}>
         {about.avatar.display && (
-          <Column
-            className={styles.sidebar}
-            minWidth={280}
-            paddingX="m"
-            paddingY="xl"
-            gap="m"
-            horizontal="center"
-          >
+          <div className={styles.sidebar}>
             <Avatar src={person.avatar} size="xl" />
             <Flex gap="8" vertical="center">
               <Icon onBackground="accent-weak" name="globe" />
@@ -106,9 +99,9 @@ export default function About() {
                 ))}
               </Flex>
             )}
-          </Column>
+          </div>
         )}
-        <Column className={styles.content} flex={1} paddingX="l">
+        <div className={styles.content}>
           <Column
             id={about.intro.title}
             fillWidth
@@ -332,8 +325,8 @@ export default function About() {
               </Column>
             </>
           )}
-        </Column>
-      </Flex>
+        </div>
+      </div>
     </Column>
   );
 }

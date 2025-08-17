@@ -9,89 +9,77 @@
 }
 
 .aboutContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     min-height: 100vh;
-    align-items: flex-start;
+    gap: var(--static-space-24);
 }
 
 .sidebar {
-    position: sticky;
-    top: var(--static-space-64);
-    height: fit-content;
-    min-height: calc(100vh - var(--static-space-128));
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    background: var(--neutral-alpha-weak);
-    border-radius: var(--radius-m);
-    border: 1px solid var(--neutral-alpha-medium);
-    backdrop-filter: blur(10px);
-    box-shadow: var(--shadow-l);
+    gap: var(--static-space-16);
+    padding: var(--static-space-24);
 }
 
 .content {
-    padding-top: var(--static-space-32);
-    overflow-y: auto;
+    width: 100%;
+    flex: 1;
 }
 
-// Legacy classes for backward compatibility
-.avatar {
-    position: sticky;
-    height: fit-content;
-    top: var(--static-space-64);
+.textAlign {
+    text-align: center;
 }
 
-@media (max-width: breakpoints.$s) {
+.blockAlign {
+    align-self: center;
+}
+
+.tableOfContents {
+    display: none !important;
+}
+
+.tableOfContentsInner {
+    display: none !important;
+}
+
+.subItem {
+    display: none !important;
+}
+
+// Desktop styles
+@media (min-width: 769px) {
     .aboutContainer {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: row;
+        align-items: flex-start;
     }
 
     .sidebar {
-        position: relative;
-        top: auto;
-        min-height: auto;
-        width: 100%;
-        max-width: 400px;
-        margin-bottom: var(--static-space-24);
-        background: transparent;
-        border: none;
+        flex: 0 0 280px;
+        max-width: 280px;
+        position: sticky;
+        top: var(--static-space-64);
+        height: fit-content;
     }
 
     .content {
-        padding-top: 0;
-        padding-left: var(--static-space-16);
-        padding-right: var(--static-space-16);
-    }
-
-    .avatar {
-        position: relative;
-        top: auto;
+        flex: 1;
+        min-width: 0;
     }
 
     .textAlign {
-        text-align: center;
+        text-align: left;
     }
 
     .blockAlign {
-        align-self: center;
+        align-self: flex-start;
     }
 
-    .tableOfContents {
-        display: none !important;
-    }
-
-    .tableOfContentsInner {
-        display: none !important;
-    }
-
-    .subItem {
-        display: none !important;
-    }
-}
-
-// Desktop-only table of contents visibility
-@media (min-width: breakpoints.$s + 1px) {
     .tableOfContents {
         display: flex !important;
     }

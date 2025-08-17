@@ -61,7 +61,7 @@ const person = {
   role: "Software Engineer",
   avatar: "/images/avatar.jpg",
   email: "aamansurushe@gmail.com",
-  location: "Asia/Kolkata", // Nagpur, Maharashtra, India
+  location: "Nagpur, Maharashtra, India", // Asia/Kolkata timezone
   languages: ["English", "Hindi", "Marathi"], // optional: Leave the array empty if you don't want to display languages
 };
 
