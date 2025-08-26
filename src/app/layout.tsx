@@ -5,7 +5,7 @@ import '@/resources/custom.css'
 import classNames from "classnames";
 import { LayoutProvider } from '@once-ui-system/core'; 
 import { Background, Column, Flex, Meta, opacity, SpacingToken } from "@once-ui-system/core";
-import { Footer, Header, RouteGuard, Providers, Analytics, PerformanceMonitor, SecurityDashboard } from '@/components';
+import { Footer, Header, RouteGuard, Providers, Analytics, PerformanceMonitor, SecurityDashboard, IOSPointer } from '@/components';
 import { baseURL, effects, fonts, style, dataStyle, home } from '@/resources';
 
 export async function generateMetadata() {
@@ -107,7 +107,8 @@ export default async function RootLayout({
       </head>
       <Providers>
          <LayoutProvider> 
-        <Column as="body" background="page" fillWidth style={{minHeight: "100vh"}} margin="0" padding="0" horizontal="center">
+          <Column as="body" background="page" fillWidth style={{minHeight: "100vh"}} margin="0" padding="0" horizontal="center">
+            <IOSPointer>
           <Background
             position="fixed"
             mask={{
@@ -167,6 +168,7 @@ export default async function RootLayout({
             <Footer/>
             <PerformanceMonitor />
             <SecurityDashboard />
+            </IOSPointer>
           </Column>
           </LayoutProvider> 
         </Providers>

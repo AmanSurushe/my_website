@@ -140,110 +140,178 @@ export function Repositories({ username, maxRepos, showFilters = true }: Reposit
   return (
     <Flex direction="column" fillWidth gap="24">
       {showFilters && (
-        <Flex direction="column" gap="16" fillWidth>
-          {/* Search */}
-          <Input
-            id="repository-search"
-            placeholder="Search repositories..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
+        <div
+          className="filters-section"
+          style={{
+            opacity: 0,
+            transform: 'translateY(-20px)',
+            animation: 'fadeInDown 0.5s ease-out forwards'
+          }}
+        >
+          <Flex direction="column" gap="16" fillWidth>
+            {/* Search */}
+            <Input
+              id="repository-search"
+              placeholder="Search repositories..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
 
-          {/* Filters */}
-          <Flex gap="12" wrap fillWidth direction="column">
-            <Flex gap="12" wrap>
-              {/* Language Filter */}
-              <Flex gap="8" wrap>
-                <Button
-                  variant={selectedLanguage === 'all' ? 'primary' : 'secondary'}
-                  size="s"
-                  onClick={() => setSelectedLanguage('all')}
-                >
-                  All Languages
-                </Button>
-                {languages.slice(0, 4).map(lang => (
+            {/* Filters */}
+            <Flex gap="12" wrap fillWidth direction="column">
+              <Flex gap="12" wrap>
+                {/* Language Filter */}
+                <Flex gap="8" wrap>
                   <Button
-                    key={lang}
-                    variant={selectedLanguage === lang ? 'primary' : 'secondary'}
+                    variant={selectedLanguage === 'all' ? 'primary' : 'secondary'}
                     size="s"
-                    onClick={() => setSelectedLanguage(lang)}
+                    onClick={() => setSelectedLanguage('all')}
                   >
-                    {lang}
+                    All Languages
                   </Button>
-                ))}
+                  {languages.slice(0, 4).map(lang => (
+                    <Button
+                      key={lang}
+                      variant={selectedLanguage === lang ? 'primary' : 'secondary'}
+                      size="s"
+                      onClick={() => setSelectedLanguage(lang)}
+                    >
+                      {lang}
+                    </Button>
+                  ))}
+                </Flex>
+
+                {/* Sort Filter */}
+                <Flex gap="8" wrap>
+                  <Button
+                    variant={sortBy === 'updated' ? 'primary' : 'secondary'}
+                    size="s"
+                    onClick={() => setSortBy('updated')}
+                  >
+                    Recently Updated
+                  </Button>
+                  <Button
+                    variant={sortBy === 'stars' ? 'primary' : 'secondary'}
+                    size="s"
+                    onClick={() => setSortBy('stars')}
+                  >
+                    Most Stars
+                  </Button>
+                  <Button
+                    variant={sortBy === 'name' ? 'primary' : 'secondary'}
+                    size="s"
+                    onClick={() => setSortBy('name')}
+                  >
+                    Name
+                  </Button>
+                </Flex>
               </Flex>
 
-              {/* Sort Filter */}
-              <Flex gap="8" wrap>
+              <Flex gap="8">
                 <Button
-                  variant={sortBy === 'updated' ? 'primary' : 'secondary'}
+                  variant={showForks ? 'primary' : 'secondary'}
                   size="s"
-                  onClick={() => setSortBy('updated')}
+                  onClick={() => setShowForks(!showForks)}
                 >
-                  Recently Updated
-                </Button>
-                <Button
-                  variant={sortBy === 'stars' ? 'primary' : 'secondary'}
-                  size="s"
-                  onClick={() => setSortBy('stars')}
-                >
-                  Most Stars
-                </Button>
-                <Button
-                  variant={sortBy === 'name' ? 'primary' : 'secondary'}
-                  size="s"
-                  onClick={() => setSortBy('name')}
-                >
-                  Name
+                  {showForks ? 'Hide' : 'Show'} Forks
                 </Button>
               </Flex>
             </Flex>
 
-            <Flex gap="8">
-              <Button
-                variant={showForks ? 'primary' : 'secondary'}
-                size="s"
-                onClick={() => setShowForks(!showForks)}
-              >
-                {showForks ? 'Hide' : 'Show'} Forks
-              </Button>
-            </Flex>
-          </Flex>
-
-          {/* Stats */}
-          <Flex gap="12" wrap>
-            <Text variant="label-default-s" onBackground="neutral-medium">
-              {filteredAndSortedRepos.length} repositories
-            </Text>
-            {searchTerm && (
+            {/* Stats */}
+            <Flex gap="12" wrap>
               <Text variant="label-default-s" onBackground="neutral-medium">
-                matching &quot;{searchTerm}&quot;
+                {filteredAndSortedRepos.length} repositories
               </Text>
-            )}
-            {selectedLanguage !== 'all' && (
-              <Tag size="s" variant="neutral">
-                {selectedLanguage}
-              </Tag>
-            )}
+              {searchTerm && (
+                <Text variant="label-default-s" onBackground="neutral-medium">
+                  matching &quot;{searchTerm}&quot;
+                </Text>
+              )}
+              {selectedLanguage !== 'all' && (
+                <Tag size="s" variant="neutral">
+                  {selectedLanguage}
+                </Tag>
+              )}
+            </Flex>
           </Flex>
-        </Flex>
+        </div>
       )}
 
       {/* Repository Grid */}
       {filteredAndSortedRepos.length > 0 ? (
-        <Grid columns="3" gap="16" fillWidth>
-          {filteredAndSortedRepos.map((repo) => (
-            <RepositoryCard key={repo.id} repository={repo} />
-          ))}
-        </Grid>
+        <div
+          className="repository-grid"
+          style={{
+            opacity: 0,
+            animation: 'fadeIn 0.6s ease-out forwards',
+            animationDelay: showFilters ? '0.3s' : '0s'
+          }}
+        >
+          <Grid columns="3" gap="16" fillWidth>
+            {filteredAndSortedRepos.map((repo, index) => (
+              <div
+                key={repo.id}
+                style={{
+                  animationDelay: `${(index * 0.1) + (showFilters ? 0.4 : 0.1)}s`
+                }}
+              >
+                <RepositoryCard repository={repo} />
+              </div>
+            ))}
+          </Grid>
+        </div>
       ) : (
-        <Flex fillWidth horizontal="center" paddingY="40" direction="column" gap="12">
-          <Icon name="search" size="l" />
-          <Text variant="body-default-m" onBackground="neutral-medium">
-            No repositories found matching your criteria
-          </Text>
-        </Flex>
+        <div
+          className="no-results"
+          style={{
+            opacity: 0,
+            transform: 'scale(0.9)',
+            animation: 'fadeInScale 0.4s ease-out forwards',
+            animationDelay: '0.2s'
+          }}
+        >
+          <Flex fillWidth horizontal="center" paddingY="40" direction="column" gap="12">
+            <Icon name="search" size="l" />
+            <Text variant="body-default-m" onBackground="neutral-medium">
+              No repositories found matching your criteria
+            </Text>
+          </Flex>
+        </div>
       )}
+
+      <style jsx>{`
+        @keyframes fadeInDown {
+          from {
+            opacity: 0;
+            transform: translateY(-20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+        
+        @keyframes fadeInScale {
+          from {
+            opacity: 0;
+            transform: scale(0.9);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+      `}</style>
     </Flex>
   );
 }

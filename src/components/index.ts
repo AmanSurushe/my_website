@@ -22,3 +22,4 @@ export { ProjectPreview } from "@/components/ProjectPreview";
 export { SocialShare, BlogShareWidget, ProjectShareWidget } from "@/components/SocialShare";
 export { PerformanceMonitor } from "@/components/PerformanceMonitor";
 export { SecurityDashboard } from "@/components/SecurityHeaders";
+export { IOSPointer } from "@/components/IOSPointer";
