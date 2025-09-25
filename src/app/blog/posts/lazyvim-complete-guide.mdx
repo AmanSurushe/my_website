@@ -1,0 +1,150 @@
+---
+title: "LazyVim: Zero to Hero in 10 Minutes"
+summary: "Transform your coding experience with LazyVim - the modern Neovim configuration that just works. Complete setup guide with essential shortcuts."
+publishedAt: "2024-12-20"
+tag: "Tools"
+image: "/images/projects/project-01/lazyvim1.png"
+images:
+  - "/images/projects/project-01/lazyvim1.png"
+  - "/images/projects/project-01/lazyvim2.png"
+team: []
+---
+
+LazyVim is a pre-configured Neovim setup that transforms your editor into a powerful IDE. No complex configuration - just install and code.
+
+## Quick Install
+
+### 1. Install Neovim
+
+```bash
+# Ubuntu/Debian
+sudo apt install neovim
+
+# macOS
+brew install neovim
+
+# Arch Linux
+sudo pacman -S neovim
+```
+
+### 2. Install a Nerd Font
+
+```bash
+# Download JetBrainsMono Nerd Font
+mkdir -p ~/.local/share/fonts
+curl -fLo JetBrainsMono.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/JetBrainsMono.zip
+unzip -o JetBrainsMono.zip -d ~/.local/share/fonts/
+fc-cache -fv ~/.local/share/fonts/
+rm JetBrainsMono.zip
+```
+
+### 3. Install LazyVim
+
+```bash
+# Backup existing config
+mv ~/.config/nvim ~/.config/nvim.bak 2>/dev/null
+
+# Clone LazyVim
+git clone https://github.com/LazyVim/starter ~/.config/nvim
+rm -rf ~/.config/nvim/.git
+
+# Launch (plugins auto-install on first run)
+nvim
+```
+
+![LazyVim Installation](/images/projects/project-01/lazyvim1.png)
+
+## Essential Shortcuts
+
+**Leader Key**: `<Space>`
+
+### File Operations
+| Key | Action |
+|-----|--------|
+| `<leader>ff` | Find files |
+| `<leader>fg` | Search in files |
+| `<leader>e` | File explorer |
+| `<leader>bd` | Close buffer |
+
+### Code Navigation  
+| Key | Action |
+|-----|--------|
+| `gd` | Go to definition |
+| `gr` | Find references |
+| `K` | Show documentation |
+| `<leader>ca` | Code actions |
+| `<leader>cr` | Rename symbol |
+
+### Git Integration
+| Key | Action |
+|-----|--------|
+| `<leader>gg` | LazyGit interface |
+| `<leader>gb` | Git blame |
+| `]h` / `[h` | Next/prev git hunk |
+
+![LazyVim Interface](/images/projects/project-01/lazyvim2.png)
+
+## Vim Basics
+
+### Movement
+| Key | Action |
+|-----|--------|
+| `h j k l` | Left, down, up, right |
+| `w` / `b` | Next/previous word |
+| `0` / `$` | Start/end of line |
+| `gg` / `G` | Top/bottom of file |
+
+### Editing
+| Key | Action |
+|-----|--------|
+| `i` / `a` | Insert before/after cursor |
+| `o` / `O` | New line below/above |
+| `dd` | Delete line |
+| `yy` | Copy line |
+| `p` | Paste |
+| `u` | Undo |
+| `.` | Repeat last action |
+
+### Visual Mode
+| Key | Action |
+|-----|--------|
+| `v` | Select characters |
+| `V` | Select lines |
+| `<C-v>` | Block selection |
+
+## Plugin Management
+
+Press `<leader>l` to open Lazy plugin manager:
+- `I` - Install plugins
+- `U` - Update all
+- `S` - Sync plugins
+
+## Common Issues & Solutions
+
+**Icons not showing?** Configure your terminal to use the Nerd Font you installed.
+
+**LSP not working?** Press `<leader>cm` to install language servers via Mason.
+
+**Slow startup?** Check `:Lazy profile` and update plugins.
+
+## Pro Tips
+
+1. **Search workflow**: `<leader>ff` → find files, `<leader>fg` → search content
+2. **Navigation**: Use `gd` to jump to definitions, `<C-o>` to jump back
+3. **Multiple cursors**: Select text in visual mode, then `<C-n>` to add more
+4. **Text objects**: `ciw` (change word), `di"` (delete inside quotes)
+5. **Telescope navigation**: Use `<C-n>/<C-p>` to navigate, `<C-x>` for splits
+
+## Quick Reference
+
+```text
+MUST-KNOW SHORTCUTS:
+<leader>ff - Find files      gd - Go to definition
+<leader>fg - Search text     K - Show documentation  
+<leader>e - File explorer    u - Undo
+<leader>ca - Code actions    . - Repeat action
+```
+
+**That's it!** You're now ready to code efficiently with LazyVim. The beauty is in its simplicity - everything just works out of the box.
+
+Start with these essentials and gradually explore more features. LazyVim grows with you.

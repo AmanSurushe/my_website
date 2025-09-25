@@ -46,27 +46,6 @@ export function SearchBox({ onClose, isVisible = true }: SearchBoxProps) {
       href: '/work/campus-management-system',
       tags: ['Education', 'Management', 'Students', 'Faculty']
     },
-    {
-      type: 'blog',
-      title: 'Getting Started with React: A Journey into Modern Web Development',
-      description: 'My experience learning React and how it transformed my approach to building user interfaces.',
-      href: '/blog/getting-started-with-react',
-      tags: ['React', 'JavaScript', 'Web Development']
-    },
-    {
-      type: 'blog',
-      title: 'Building Scalable Node.js APIs: Lessons from Production',
-      description: 'Best practices for designing and implementing robust Node.js APIs that can handle growth.',
-      href: '/blog/building-scalable-node-apis',
-      tags: ['Node.js', 'API', 'Backend', 'Scalability']
-    },
-    {
-      type: 'blog',
-      title: 'TypeScript Best Practices: Writing Better, Safer Code',
-      description: 'Essential TypeScript practices that have improved my code quality and developer experience.',
-      href: '/blog/typescript-best-practices',
-      tags: ['TypeScript', 'Best Practices', 'Code Quality']
-    }
   ], []);
 
   useEffect(() => {

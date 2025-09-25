@@ -64,7 +64,7 @@ function DefaultErrorFallback({ error, resetError }: { error?: Error; resetError
               </Text>
             </AnimatedCard>
 
-            {process.env.NODE_ENV === 'development' && error?.stack && (
+            {process.env.NODE_ENV === 'development' && error && (
               <AnimatedCard delay={0.8} direction="left">
                 <Column gap="8">
                   <Text variant="label-strong-s" onBackground="danger-strong">
@@ -83,7 +83,7 @@ function DefaultErrorFallback({ error, resetError }: { error?: Error; resetError
                       borderRadius: '8px',
                     }}
                   >
-                    {error.stack}
+                    {error.stack || error.message || 'No stack trace available'}
                   </Text>
                 </Column>
               </AnimatedCard>
