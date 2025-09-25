@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { sendDiscordNotification } from '@/lib/discord';
+import { generateUserConfirmationEmail, generateNotificationEmail } from '@/lib/emailTemplates';
 
 export async function POST(request: NextRequest) {
   try {
@@ -35,20 +37,8 @@ export async function POST(request: NextRequest) {
     const mailOptionsToYou = {
       from: process.env.GMAIL_USER,
       to: 'aamansurushe@gmail.com',
-      subject: `New Contact Form Message from ${name}`,
-      html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>From:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong></p>
-        <div style="background-color: #f5f5f5; padding: 15px; border-radius: 5px; margin: 10px 0;">
-          ${message.replace(/\n/g, '<br>')}
-        </div>
-        <hr>
-        <p style="color: #666; font-size: 12px;">
-          This message was sent via your portfolio contact form at ${new Date().toLocaleString()}
-        </p>
-      `,
+      subject: `🔔 New Contact Form Message from ${name}`,
+      html: generateNotificationEmail({ name, email, message }),
       replyTo: email,
     };
 
@@ -56,32 +46,15 @@ export async function POST(request: NextRequest) {
     const mailOptionsToSender = {
       from: process.env.GMAIL_USER,
       to: email,
-      subject: 'Thank you for contacting Aman Surushe',
-      html: `
-        <h2>Thank you for reaching out!</h2>
-        <p>Hi ${name},</p>
-        <p>Thank you for your message. I have received your inquiry and will get back to you as soon as possible.</p>
-        
-        <h3>Your message:</h3>
-        <div style="background-color: #f5f5f5; padding: 15px; border-radius: 5px; margin: 10px 0;">
-          ${message.replace(/\n/g, '<br>')}
-        </div>
-        
-        <p>Best regards,<br>
-        Aman Surushe<br>
-        Software Engineer</p>
-        
-        <hr>
-        <p style="color: #666; font-size: 12px;">
-          This is an automated response. Please do not reply to this email directly.
-        </p>
-      `,
+      subject: '✨ Thank you for contacting Aman Surushe!',
+      html: generateUserConfirmationEmail({ name, email, message }),
     };
 
-    // Send both emails
+    // Send both emails and Discord notification
     await Promise.all([
       transporter.sendMail(mailOptionsToYou),
       transporter.sendMail(mailOptionsToSender),
+      sendDiscordNotification({ name, email, message }),
     ]);
 
     return NextResponse.json(
