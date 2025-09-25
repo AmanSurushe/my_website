@@ -1,5 +1,5 @@
 import { getPosts } from '@/utils/utils';
-import { Grid } from '@once-ui-system/core';
+import { Grid, Column } from '@once-ui-system/core';
 import Post from './Post';
 
 interface PostsProps {
@@ -28,12 +28,30 @@ export function Posts({
           )
         : sortedBlogs;
 
+    // For single blog, use full-width column layout like Projects
+    if (displayedBlogs.length === 1) {
+        return (
+            <Column fillWidth gap="xl" marginBottom="40" paddingX="l">
+                {displayedBlogs.map((post) => (
+                    <Post
+                        key={post.slug}
+                        post={post}
+                        thumbnail={thumbnail}
+                        direction={direction}
+                    />
+                ))}
+            </Column>
+        );
+    }
+
     return (
         <>
             {displayedBlogs.length > 0 && (
                 <Grid
                     columns={columns}
-                    fillWidth marginBottom="40" gap="12">
+                    fillWidth 
+                    marginBottom="40" 
+                    gap="l">
                     {displayedBlogs.map((post) => (
                         <Post
                             key={post.slug}

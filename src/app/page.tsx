@@ -71,16 +71,30 @@ export default function Home() {
         <Projects range={[1, 1]} />
       </RevealFx>
       {routes["/blog"] && (
-        <Flex fillWidth gap="24" direction="column">
-          <Flex flex={1} paddingLeft="l" paddingTop="24">
-            <Heading as="h2" variant="display-strong-xs" wrap="balance">
-              Latest from the blog
-            </Heading>
-          </Flex>
-          <Flex flex={3} paddingX="20">
-            <Posts range={[1, 2]} columns="2" />
-          </Flex>
-        </Flex>
+        <RevealFx translateY="16" delay={0.8}>
+          <Column fillWidth gap="32" marginTop="40">
+            <Column maxWidth="s" paddingX="l">
+              <Heading 
+                as="h2" 
+                variant="display-strong-xs" 
+                wrap="balance"
+                marginBottom="12">
+                Latest from the blog
+              </Heading>
+              <Text 
+                variant="body-default-s" 
+                onBackground="neutral-weak"
+                wrap="balance">
+                Insights, tutorials, and thoughts on development
+              </Text>
+            </Column>
+            <Posts 
+              range={[1, 2]} 
+              columns="2" 
+              thumbnail={true}
+            />
+          </Column>
+        </RevealFx>
       )}
       <Projects range={[2]} />
       {routes["/repositories"] && (
