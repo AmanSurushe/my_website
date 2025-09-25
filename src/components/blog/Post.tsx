@@ -23,7 +23,7 @@ export default function Post({ post, thumbnail, direction }: PostProps) {
             href={`/blog/${post.slug}`}>
             <Flex
                 position="relative"
-                transition="medium"
+                transition="micro-medium"
                 direction={direction}
                 radius="l"
                 className={styles.hover}
