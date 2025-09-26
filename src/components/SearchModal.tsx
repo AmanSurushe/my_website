@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useMemo, useRef } from 'react';
+import { useRouter } from 'next/navigation';
 import { Input, Column, Text, Button, Flex, Icon, SmartLink } from '@once-ui-system/core';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './SearchModal.module.scss';
@@ -24,6 +25,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
+  const router = useRouter();
 
   // Search data - includes projects and blog posts
   const searchData: SearchResult[] = useMemo(() => [
@@ -118,8 +120,8 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
         case 'Enter':
           e.preventDefault();
           if (results[selectedIndex]) {
-            window.location.href = results[selectedIndex].href;
             onClose();
+            router.push(results[selectedIndex].href);
           }
           break;
         case 'Escape':
@@ -130,7 +132,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
 
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen, results, selectedIndex, onClose]);
+  }, [isOpen, results, selectedIndex, onClose, router]);
 
   // Reset state when modal closes
   useEffect(() => {
@@ -271,22 +273,23 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: index * 0.05 }}
                         >
-                          <SmartLink 
-                            href={result.href}
-                            onClick={onClose}
-                            style={{ textDecoration: 'none', width: '100%' }}
+                          <Flex
+                            paddingY="m"
+                            paddingX="s"
+                            radius="s"
+                            border={selectedIndex === index ? "accent-medium" : "transparent"}
+                            background={selectedIndex === index ? "accent-alpha-weak" : "transparent"}
+                            gap="m"
+                            direction="column"
+                            style={{ cursor: 'pointer', width: '100%', transition: 'all 0.2s ease' }}
+                            onMouseEnter={() => setSelectedIndex(index)}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              onClose();
+                              router.push(result.href);
+                            }}
                           >
-                            <Flex
-                              paddingY="m"
-                              paddingX="s"
-                              radius="s"
-                              border={selectedIndex === index ? "accent-medium" : "transparent"}
-                              background={selectedIndex === index ? "accent-alpha-weak" : "transparent"}
-                              gap="m"
-                              direction="column"
-                              style={{ cursor: 'pointer', width: '100%', transition: 'all 0.2s ease' }}
-                              onMouseEnter={() => setSelectedIndex(index)}
-                            >
                               <Flex horizontal="between" vertical="start" gap="m">
                                 <Column gap="xs" style={{ flex: 1 }}>
                                   <Text variant="heading-default-s" onBackground="neutral-strong">
@@ -352,8 +355,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                                   )}
                                 </Flex>
                               )}
-                            </Flex>
-                          </SmartLink>
+                          </Flex>
                         </motion.div>
                       ))}
                     </Column>
