@@ -189,8 +189,8 @@ export function RepositoryCard({ repository }: RepositoryCardProps) {
                 style={{ transform: "translateZ(10px)" }}
                 whileHover={{ y: -3 }}
               >
-                <Flex horizontal="between" vertical="center" fillWidth className="repo-stats">
-                  <Flex gap="12" vertical="center">
+                <Flex horizontal="between" vertical="center" fillWidth className="repo-stats" wrap>
+                  <Flex gap="8" vertical="center" wrap>
                     {repository.language && (
                       <motion.div
                         whileHover={{ scale: 1.2, rotate: 360 }}
@@ -411,6 +411,30 @@ export function RepositoryCard({ repository }: RepositoryCardProps) {
         
         .repository-card-content:hover::after {
           left: 100%;
+        }
+        
+        /* Mobile responsive improvements */
+        @media (max-width: 768px) {
+          .repo-stats {
+            flex-direction: column;
+            align-items: flex-start !important;
+            gap: 8px;
+          }
+          
+          .repo-topics {
+            justify-content: flex-start;
+          }
+          
+          .repo-name {
+            font-size: 1rem;
+            line-height: 1.4;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          .repository-card-content {
+            padding: 12px;
+          }
         }
       `}</style>
     </motion.div>

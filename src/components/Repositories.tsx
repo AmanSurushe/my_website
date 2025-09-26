@@ -158,56 +158,51 @@ export function Repositories({ username, maxRepos, showFilters = true }: Reposit
             />
 
             {/* Filters */}
-            <Flex gap="12" wrap fillWidth direction="column">
-              <Flex gap="12" wrap>
-                {/* Language Filter */}
-                <Flex gap="8" wrap>
+            <Flex gap="16" wrap fillWidth direction="column">
+              {/* Language Filter */}
+              <Flex gap="8" wrap fillWidth>
+                <Button
+                  variant={selectedLanguage === 'all' ? 'primary' : 'secondary'}
+                  size="s"
+                  onClick={() => setSelectedLanguage('all')}
+                >
+                  All Languages
+                </Button>
+                {languages.slice(0, 4).map(lang => (
                   <Button
-                    variant={selectedLanguage === 'all' ? 'primary' : 'secondary'}
+                    key={lang}
+                    variant={selectedLanguage === lang ? 'primary' : 'secondary'}
                     size="s"
-                    onClick={() => setSelectedLanguage('all')}
+                    onClick={() => setSelectedLanguage(lang)}
                   >
-                    All Languages
+                    {lang}
                   </Button>
-                  {languages.slice(0, 4).map(lang => (
-                    <Button
-                      key={lang}
-                      variant={selectedLanguage === lang ? 'primary' : 'secondary'}
-                      size="s"
-                      onClick={() => setSelectedLanguage(lang)}
-                    >
-                      {lang}
-                    </Button>
-                  ))}
-                </Flex>
-
-                {/* Sort Filter */}
-                <Flex gap="8" wrap>
-                  <Button
-                    variant={sortBy === 'updated' ? 'primary' : 'secondary'}
-                    size="s"
-                    onClick={() => setSortBy('updated')}
-                  >
-                    Recently Updated
-                  </Button>
-                  <Button
-                    variant={sortBy === 'stars' ? 'primary' : 'secondary'}
-                    size="s"
-                    onClick={() => setSortBy('stars')}
-                  >
-                    Most Stars
-                  </Button>
-                  <Button
-                    variant={sortBy === 'name' ? 'primary' : 'secondary'}
-                    size="s"
-                    onClick={() => setSortBy('name')}
-                  >
-                    Name
-                  </Button>
-                </Flex>
+                ))}
               </Flex>
 
-              <Flex gap="8">
+              {/* Sort and Fork Filters */}
+              <Flex gap="8" wrap fillWidth>
+                <Button
+                  variant={sortBy === 'updated' ? 'primary' : 'secondary'}
+                  size="s"
+                  onClick={() => setSortBy('updated')}
+                >
+                  Recently Updated
+                </Button>
+                <Button
+                  variant={sortBy === 'stars' ? 'primary' : 'secondary'}
+                  size="s"
+                  onClick={() => setSortBy('stars')}
+                >
+                  Most Stars
+                </Button>
+                <Button
+                  variant={sortBy === 'name' ? 'primary' : 'secondary'}
+                  size="s"
+                  onClick={() => setSortBy('name')}
+                >
+                  Name
+                </Button>
                 <Button
                   variant={showForks ? 'primary' : 'secondary'}
                   size="s"
@@ -248,7 +243,11 @@ export function Repositories({ username, maxRepos, showFilters = true }: Reposit
             animationDelay: showFilters ? '0.3s' : '0s'
           }}
         >
-          <Grid columns="3" gap="16" fillWidth>
+          <Grid 
+            columns={{ initial: "1", xs: "1", s: "2", m: "3" }}
+            gap="16" 
+            fillWidth
+          >
             {filteredAndSortedRepos.map((repo, index) => (
               <div
                 key={repo.id}
@@ -309,6 +308,27 @@ export function Repositories({ username, maxRepos, showFilters = true }: Reposit
           to {
             opacity: 1;
             transform: scale(1);
+          }
+        }
+        
+        /* Mobile responsive improvements */
+        @media (max-width: 768px) {
+          .filters-section {
+            padding: 0 8px;
+          }
+          
+          .repository-grid {
+            padding: 0 8px;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          .filters-section {
+            padding: 0 4px;
+          }
+          
+          .repository-grid {
+            padding: 0 4px;
           }
         }
       `}</style>
