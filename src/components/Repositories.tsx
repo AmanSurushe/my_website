@@ -244,9 +244,10 @@ export function Repositories({ username, maxRepos, showFilters = true }: Reposit
           }}
         >
           <Grid 
-            columns={{ initial: "1", xs: "1", s: "2", m: "3" }}
+            columns="3"
             gap="16" 
             fillWidth
+            className="repository-grid-responsive"
           >
             {filteredAndSortedRepos.map((repo, index) => (
               <div
@@ -312,6 +313,12 @@ export function Repositories({ username, maxRepos, showFilters = true }: Reposit
         }
         
         /* Mobile responsive improvements */
+        .repository-grid-responsive {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 16px;
+        }
+        
         @media (max-width: 768px) {
           .filters-section {
             padding: 0 8px;
@@ -319,6 +326,10 @@ export function Repositories({ username, maxRepos, showFilters = true }: Reposit
           
           .repository-grid {
             padding: 0 8px;
+          }
+          
+          .repository-grid-responsive {
+            grid-template-columns: repeat(2, 1fr);
           }
         }
         
@@ -329,6 +340,10 @@ export function Repositories({ username, maxRepos, showFilters = true }: Reposit
           
           .repository-grid {
             padding: 0 4px;
+          }
+          
+          .repository-grid-responsive {
+            grid-template-columns: 1fr;
           }
         }
       `}</style>
