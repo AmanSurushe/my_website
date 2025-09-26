@@ -115,8 +115,8 @@ const home = {
   },
   subline: (
     <>
-      Software Engineer from Nagpur building robust systems and intuitive experiences.
-      <br /> Passionate about high-performance solutions and scalable architecture.
+      Software Engineer from Nagpur specializing in enterprise-grade systems and scalable microservices.
+      <br /> Expert in building high-performance communication platforms and automation solutions.
     </>
   ),
 };
@@ -142,9 +142,9 @@ const about = {
     title: "Introduction", 
     description: (
       <>
-        Full-Stack Engineer with <strong>3+ years</strong> building enterprise applications. 
-        Specialized in Node.js backend systems and React.js development. 
-        Maintained high-scale platforms processing <strong>1.2+ billion messages</strong>.
+        Full-Stack Software Engineer with <strong>3+ years</strong> specializing in scalable enterprise systems. 
+        Expert in Node.js microservices, React.js applications, and high-performance communication platforms. 
+        Built and maintained systems processing <strong>1.2+ billion messages</strong> with 99.9% uptime.
       </>
     ),
   },
@@ -157,10 +157,10 @@ const about = {
         timeframe: "Dec 2023 - Present",
         role: "Software Developer",
         achievements: [
-          <>Engineered WhatsApp messaging system processing <strong>20 lakh messages daily</strong> with 99.9% uptime, serving 120+ crore messages total.</>,
-          <>Developed middleware architecture connecting multiple CRM systems, reducing data processing time by <strong>45%</strong>.</>,
-          <>Integrated Prometheus and Grafana monitoring, reducing system downtime by <strong>40%</strong>.</>,
-          <>Optimized Asterisk-based voice systems handling concurrent calls with improved connection rates.</>,
+          <>Engineered WhatsApp Connector processing <strong>2 million messages daily</strong> with 99.9% uptime, serving 1.2+ billion messages total.</>,
+          <>Built scalable microservices architecture supporting WhatsApp communication channels and CRM integrations.</>,
+          <>Integrated Prometheus and Grafana monitoring stack, reducing system downtime by <strong>40%</strong> and improving observability.</>,
+          <>Optimized Asterisk-based voice systems for concurrent call handling, achieving <strong>95%+ connection rates</strong>.</>,
         ],
         images: [],
       },
@@ -169,9 +169,9 @@ const about = {
         timeframe: "Nov 2022 - Dec 2023",
         role: "Software Developer",
         achievements: [
-          <>Built barcode-based gate pass system for <strong>5000+ students</strong>, reducing manual processing time by <strong>80%</strong>.</>,
-          <>Developed automated remuneration system for faculty payroll, reducing processing time by <strong>65%</strong>.</>,
-          <>Created administrative workflow tools saving <strong>15+ hours weekly</strong>.</>,
+          <>Built comprehensive gate pass system with barcode scanning for <strong>5000+ students</strong>, reducing manual processing time by <strong>80%</strong>.</>,
+          <>Developed automated faculty payroll system, streamlining remuneration processing by <strong>65%</strong> and eliminating manual calculations.</>,
+          <>Created administrative workflow automation tools, saving <strong>15+ hours weekly</strong> across multiple departments.</>,
         ],
         images: [],
       },
@@ -180,9 +180,9 @@ const about = {
         timeframe: "May 2022 - Aug 2022",
         role: "Backend Developer Intern",
         achievements: [
-          <>Implemented Redis caching and MVC architecture, improving API response times by <strong>50%</strong>.</>,
-          <>Built third-party API integrations achieving <strong>99.5% success rate</strong> in data synchronization.</>,
-          <>Optimized database performance reducing query execution time by <strong>30%</strong>.</>,
+          <>Implemented Redis caching layer and MVC architecture, improving API response times by <strong>50%</strong> for high-traffic endpoints.</>,
+          <>Built robust third-party API integrations with comprehensive error handling, achieving <strong>99.5% success rate</strong> in data synchronization.</>,
+          <>Optimized MySQL database queries and indexing strategies, reducing query execution time by <strong>30%</strong>.</>,
         ],
         images: [],
       },
