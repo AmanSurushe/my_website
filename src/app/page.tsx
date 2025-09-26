@@ -100,12 +100,12 @@ export default function Home() {
       {routes["/repositories"] && (
         <FadeInWhenVisible delay={0.3}>
           <Flex fillWidth gap="24" direction="column">
-            <Flex flex={1} paddingLeft="l" paddingTop="24">
+            <Flex flex={1} paddingLeft="12" paddingTop="24">
               <Heading as="h2" variant="display-strong-xs" wrap="balance">
                 Latest repositories
               </Heading>
             </Flex>
-            <Flex flex={3} paddingX="20">
+            <Flex flex={3} paddingX="12">
               <Repositories username="AmanSurushe" maxRepos={6} showFilters={false} />
             </Flex>
           </Flex>

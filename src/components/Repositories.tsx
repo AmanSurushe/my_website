@@ -138,7 +138,7 @@ export function Repositories({ username, maxRepos, showFilters = true }: Reposit
   }
 
   return (
-    <Flex direction="column" fillWidth gap="24">
+    <Flex direction="column" fillWidth gap="24" style={{ overflowX: 'hidden' }}>
       {showFilters && (
         <div
           className="filters-section"
@@ -317,33 +317,47 @@ export function Repositories({ username, maxRepos, showFilters = true }: Reposit
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           gap: 16px;
+          width: 100%;
+          overflow-x: hidden;
         }
         
         @media (max-width: 768px) {
           .filters-section {
-            padding: 0 8px;
+            padding: 0 4px;
+            max-width: 100%;
+            overflow-x: hidden;
           }
           
           .repository-grid {
-            padding: 0 8px;
+            padding: 0 4px;
+            max-width: 100%;
+            overflow-x: hidden;
           }
           
           .repository-grid-responsive {
             grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            max-width: 100%;
           }
         }
         
         @media (max-width: 480px) {
           .filters-section {
-            padding: 0 4px;
+            padding: 0 2px;
+            max-width: 100%;
+            overflow-x: hidden;
           }
           
           .repository-grid {
-            padding: 0 4px;
+            padding: 0 2px;
+            max-width: 100%;
+            overflow-x: hidden;
           }
           
           .repository-grid-responsive {
             grid-template-columns: 1fr;
+            gap: 8px;
+            max-width: 100%;
           }
         }
       `}</style>

@@ -419,21 +419,34 @@ export function RepositoryCard({ repository }: RepositoryCardProps) {
             flex-direction: column;
             align-items: flex-start !important;
             gap: 8px;
+            max-width: 100%;
+            overflow-x: hidden;
           }
           
           .repo-topics {
             justify-content: flex-start;
+            max-width: 100%;
+            overflow-x: hidden;
           }
           
           .repo-name {
             font-size: 1rem;
             line-height: 1.4;
+            word-break: break-word;
+            max-width: 100%;
           }
         }
         
         @media (max-width: 480px) {
           .repository-card-content {
             padding: 12px;
+            max-width: 100%;
+            overflow-x: hidden;
+          }
+          
+          .repository-card {
+            max-width: 100%;
+            overflow-x: hidden;
           }
         }
       `}</style>
