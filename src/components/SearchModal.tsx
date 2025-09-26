@@ -198,6 +198,10 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                 placeholder="Search projects and blog posts..."
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
+                style={{
+                  fontSize: '16px', // Prevents zoom on iOS
+                  WebkitAppearance: 'none' // Remove iOS styling
+                }}
               />
 
               {/* Results Container */}
@@ -281,7 +285,13 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                             background={selectedIndex === index ? "accent-alpha-weak" : "transparent"}
                             gap="m"
                             direction="column"
-                            style={{ cursor: 'pointer', width: '100%', transition: 'all 0.2s ease' }}
+                            style={{ 
+                              cursor: 'pointer', 
+                              width: '100%', 
+                              transition: 'all 0.2s ease',
+                              minHeight: '44px', // iOS touch target minimum
+                              WebkitTapHighlightColor: 'transparent' // Remove iOS tap highlight
+                            }}
                             onMouseEnter={() => setSelectedIndex(index)}
                             onClick={(e) => {
                               e.preventDefault();
