@@ -27,12 +27,12 @@ const shareStats = {
 
 const platforms: SharePlatform[] = [
   {
-    name: 'Twitter',
-    icon: '🐦',
-    color: '#1DA1F2',
+    name: 'X',
+    icon: '𝕏',
+    color: '#000000',
     shareUrl: ({ url, title, hashtags }) => {
       const text = `${title} ${hashtags?.map(tag => `#${tag}`).join(' ') || ''}`;
-      return `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+      return `https://x.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
     },
   },
   {

@@ -4,6 +4,9 @@ interface ContactData {
   message: string;
 }
 
+// Import baseURL and social from config
+import { baseURL, social } from '@/resources';
+
 // Base styles for consistent email design
 const emailStyles = {
   container: `
@@ -148,7 +151,7 @@ export function generateUserConfirmationEmail(data: ContactData): string {
           <!-- Call to Action -->
           <div style="text-align: center;">
             <p style="color: #555555; margin-bottom: 15px;">While you wait, check out my latest work:</p>
-            <a href="https://amansurushe.vercel.app" style="${emailStyles.button}">
+            <a href="${baseURL}" style="${emailStyles.button}">
               Visit My Portfolio
             </a>
           </div>
@@ -167,11 +170,9 @@ export function generateUserConfirmationEmail(data: ContactData): string {
           <div style="text-align: center; margin: 25px 0;">
             <p style="color: #555555; margin-bottom: 10px;">Connect with me:</p>
             <div>
-              <a href="https://linkedin.com/in/amansurushe" style="color: #667eea; text-decoration: none; margin: 0 10px;">LinkedIn</a>
-              <span style="color: #cccccc;">|</span>
-              <a href="https://github.com/AmanSurushe" style="color: #667eea; text-decoration: none; margin: 0 10px;">GitHub</a>
-              <span style="color: #cccccc;">|</span>
-              <a href="https://twitter.com/amansurushe" style="color: #667eea; text-decoration: none; margin: 0 10px;">Twitter</a>
+              ${social.filter(s => s.name !== 'Email').map((s, index, arr) => `
+                <a href="${s.link}" style="color: #667eea; text-decoration: none; margin: 0 10px;">${s.name}</a>${index < arr.length - 1 ? '<span style="color: #cccccc;">|</span>' : ''}
+              `).join('')}
             </div>
           </div>
         </div>
@@ -275,7 +276,7 @@ export function generateNotificationEmail(data: ContactData): string {
                  style="${emailStyles.button}; margin: 5px;">
                 📧 Reply via Email
               </a>
-              <a href="https://amansurushe.vercel.app/contact" 
+              <a href="${baseURL}/contact" 
                  style="${emailStyles.button}; margin: 5px; background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);">
                 🌐 View Contact Form
               </a>
@@ -297,7 +298,7 @@ export function generateNotificationEmail(data: ContactData): string {
         <div style="${emailStyles.footer}">
           <p style="${emailStyles.footerText}">
             This notification was sent from your portfolio contact form.<br>
-            <strong>amansurushe.vercel.app</strong><br>
+            <strong>${baseURL.replace('https://', '')}</strong><br>
             Generated on ${timestamp}
           </p>
         </div>

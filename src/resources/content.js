@@ -90,6 +90,11 @@ const social = [
     link: "https://www.linkedin.com/in/aman-surushe/",
   },
   {
+    name: "X",
+    icon: "x",
+    link: "https://x.com/aman_surushe",
+  },
+  {
     name: "Email",
     icon: "email",
     link: `mailto:${person.email}`,

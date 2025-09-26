@@ -124,13 +124,13 @@ export default async function BlogPost({
           <Flex gap="12" paddingTop="32" paddingBottom="16" wrap>
             <Text variant="body-default-s" onBackground="neutral-medium">Share this post:</Text>
             <SmartLink 
-              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.metadata.title)}&url=${encodeURIComponent(`${baseURL}${blog.path}/${post.slug}`)}`}
+              href={`https://x.com/intent/tweet?text=${encodeURIComponent(post.metadata.title)}&url=${encodeURIComponent(`${baseURL}${blog.path}/${post.slug}`)}`}
               target="_blank"
               style={{ textDecoration: 'none' }}
             >
               <Flex gap="8" padding="8" radius="s" background="neutral-alpha-weak" vertical="center">
-                <Icon name="twitter" size="s" />
-                <Text variant="label-default-s">Twitter</Text>
+                <Icon name="x" size="s" />
+                <Text variant="label-default-s">X</Text>
               </Flex>
             </SmartLink>
             <SmartLink 

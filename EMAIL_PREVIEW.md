@@ -20,7 +20,7 @@ I've created professional HTML email templates for both user confirmations and n
 - Message summary showing what they sent
 - Clear next steps and response timeline (24-48 hours)
 - Call-to-action button to visit your portfolio
-- Social media links (LinkedIn, GitHub, Twitter)
+- Social media links (LinkedIn, GitHub, X)
 - Contact information and location
 - Professional footer with disclaimer
 
