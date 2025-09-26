@@ -23,28 +23,35 @@ export function SearchBox({ onClose, isVisible = true }: SearchBoxProps) {
   const [results, setResults] = useState<SearchResult[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  // Mock data - in a real app, this would come from your CMS or API
+  // Search data - includes projects and blog posts
   const searchData: SearchResult[] = useMemo(() => [
     {
       type: 'project',
       title: 'WhatsApp Campaign Management System',
       description: 'A comprehensive system for managing WhatsApp marketing campaigns with real-time analytics and automated messaging.',
       href: '/work/whatsapp-campaign-management-system',
-      tags: ['Node.js', 'React', 'WhatsApp API', 'Analytics']
+      tags: ['Node.js', 'React', 'WhatsApp API', 'Analytics', 'MongoDB', 'Express']
     },
     {
       type: 'project', 
       title: 'Real-time Voice Communication Platform',
       description: 'High-performance voice communication system with WebRTC integration and scalable architecture.',
       href: '/work/real-time-voice-communication-platform',
-      tags: ['WebRTC', 'Real-time', 'Voice', 'Communication']
+      tags: ['WebRTC', 'Real-time', 'Voice', 'Communication', 'JavaScript', 'Node.js']
     },
     {
       type: 'project',
-      title: 'Campus Management System',
-      description: 'Comprehensive educational management platform with student, faculty, and administrative modules.',
+      title: 'Campus Management & Security System',
+      description: 'Comprehensive educational management platform with student, faculty, and administrative modules plus security features.',
       href: '/work/campus-management-system',
-      tags: ['Education', 'Management', 'Students', 'Faculty']
+      tags: ['Education', 'Management', 'Students', 'Faculty', 'Security', 'Database']
+    },
+    {
+      type: 'blog',
+      title: 'LazyVim: Zero to Hero in 10 Minutes',
+      description: 'Transform your coding experience with LazyVim - the modern Neovim configuration that just works. Complete setup guide with essential shortcuts.',
+      href: '/blog/lazyvim-complete-guide',
+      tags: ['Neovim', 'LazyVim', 'Editor', 'IDE', 'Development Tools', 'Productivity']
     },
   ], []);
 

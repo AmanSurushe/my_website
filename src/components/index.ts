@@ -16,6 +16,8 @@ export { AnimatedCard, FadeInWhenVisible, StaggerContainer } from "@/components/
 export { PageTransition, SlideInFromBottom, ScaleIn, FloatingAnimation } from "@/components/PageTransition";
 export { Testimonials } from "@/components/Testimonials";
 export { AdvancedFilters } from "@/components/AdvancedFilters";
+export { SearchModal } from "@/components/SearchModal";
+export { SearchBox } from "@/components/SearchBox";
 export { ErrorBoundary, DefaultErrorFallback, useErrorHandler } from "@/components/ErrorBoundary";
 export { LanguageSwitcher } from "@/components/LanguageSwitcher";
 export { ProjectPreview } from "@/components/ProjectPreview";

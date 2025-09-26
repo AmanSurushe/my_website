@@ -1,0 +1,44 @@
+.searchModal {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 90% !important;
+  max-width: 560px !important;
+  margin: 0 !important;
+  z-index: 1001 !important;
+  
+  @media (max-width: 768px) {
+    width: calc(100% - 32px) !important;
+    max-width: 500px !important;
+  }
+  
+  @media (max-width: 480px) {
+    width: calc(100% - 24px) !important;
+    max-width: none !important;
+    top: 10% !important;
+    transform: translate(-50%, 0) !important;
+    max-height: calc(100vh - 80px) !important;
+  }
+}
+
+.searchShortcuts {
+  @media (max-width: 479px) {
+    display: none !important;
+  }
+}
+
+.searchShortcutsMobile {
+  display: none;
+  
+  @media (max-width: 479px) {
+    display: block !important;
+  }
+}
+
+.searchContainer {
+  @media (max-width: 480px) {
+    max-height: calc(100vh - 120px) !important;
+    min-height: 300px !important;
+  }
+}

@@ -7,6 +7,7 @@ import { Fade, Flex, Line, ToggleButton } from "@once-ui-system/core";
 
 import { routes, display, person, about, blog, work, gallery, repositories, contact, testimonials, demos } from "@/resources";
 import { ThemeToggle } from "./ThemeToggle";
+import { SearchModal } from "./SearchModal";
 import styles from "./Header.module.scss";
 
 // Hook to detect screen size
@@ -65,6 +66,7 @@ export default TimeDisplay;
 export const Header = () => {
   const pathname = usePathname() ?? "";
   const isMobile = useIsMobile();
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   return (
     <>
@@ -142,8 +144,8 @@ export const Header = () => {
               <Line background="neutral-alpha-medium" vert maxHeight="24" />
               <ToggleButton
                 prefixIcon="search"
-                href="/search"
-                selected={pathname === "/search"}
+                onClick={() => setIsSearchOpen(true)}
+                selected={isSearchOpen}
                 aria-label="Search"
               />
               {display.themeSwitcher && (
@@ -166,6 +168,11 @@ export const Header = () => {
           </Flex>
         </Flex>
       </Flex>
+      
+      <SearchModal 
+        isOpen={isSearchOpen} 
+        onClose={() => setIsSearchOpen(false)} 
+      />
     </>
   );
 };
