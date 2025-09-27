@@ -34,11 +34,38 @@ export function RepositoryCard({ repository }: RepositoryCardProps) {
   }, []);
 
   const languageColor = getRepositoryLanguageColor(repository.language);
-  const updatedDate = new Date(repository.updated_at).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric'
-  });
+  
+  // Enhanced date formatting
+  const updatedDate = new Date(repository.updated_at);
+  const createdDate = new Date(repository.created_at);
+  const now = new Date();
+  
+  const getRelativeTime = (date: Date) => {
+    const diffTime = Math.abs(now.getTime() - date.getTime());
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    
+    if (diffDays === 1) return 'yesterday';
+    if (diffDays < 7) return `${diffDays} days ago`;
+    if (diffDays < 30) return `${Math.ceil(diffDays / 7)} weeks ago`;
+    if (diffDays < 365) return `${Math.ceil(diffDays / 30)} months ago`;
+    return `${Math.ceil(diffDays / 365)} years ago`;
+  };
+  
+  const getRepositoryAge = () => {
+    const diffTime = Math.abs(now.getTime() - createdDate.getTime());
+    const diffYears = diffTime / (1000 * 60 * 60 * 24 * 365);
+    
+    if (diffYears < 1) {
+      const diffMonths = Math.ceil(diffTime / (1000 * 60 * 60 * 24 * 30));
+      return diffMonths === 1 ? '1 month old' : `${diffMonths} months old`;
+    }
+    
+    const years = Math.ceil(diffYears);
+    return years === 1 ? '1 year old' : `${years} years old`;
+  };
+  
+  const formattedUpdated = getRelativeTime(updatedDate);
+  const repositoryAge = getRepositoryAge();
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!ref.current) return;
@@ -166,111 +193,148 @@ export function RepositoryCard({ repository }: RepositoryCardProps) {
                   style={{ transform: "translateZ(20px)" }}
                   whileHover={{ scale: 1.05 }}
                 >
-                  <Flex gap="4" wrap className="repo-topics">
-                    {repository.topics.slice(0, 3).map((topic, index) => (
-                      <motion.div
-                        key={index}
-                        whileHover={{ 
-                          scale: 1.1, 
-                          rotate: Math.random() * 10 - 5,
-                          transition: { duration: 0.2 }
-                        }}
-                        style={{ transform: `translateZ(${10 + index * 5}px)` }}
-                      >
-                        <Tag size="s" variant="neutral">
-                          {topic}
-                        </Tag>
-                      </motion.div>
-                    ))}
-                    {repository.topics.length > 3 && (
-                      <motion.div
-                        style={{ transform: "translateZ(25px)" }}
-                        whileHover={{ scale: 1.1 }}
-                      >
-                        <Text variant="label-default-xs" onBackground="neutral-weak">
-                          +{repository.topics.length - 3} more
-                        </Text>
-                      </motion.div>
+                  <Flex direction="column" gap="4" className="repo-topics-section">
+                    {repository.topics.length > 5 && (
+                      <Text variant="label-default-xs" onBackground="neutral-weak" style={{ fontSize: '10px' }}>
+                        {repository.topics.length} topics
+                      </Text>
                     )}
+                    <Flex gap="4" wrap className="repo-topics" style={{ 
+                      maxHeight: repository.topics.length > 6 ? '40px' : 'auto',
+                      overflow: 'hidden',
+                      position: 'relative'
+                    }}>
+                      {repository.topics.slice(0, 6).map((topic, index) => (
+                        <motion.div
+                          key={index}
+                          whileHover={{ 
+                            scale: 1.1, 
+                            rotate: Math.random() * 10 - 5,
+                            transition: { duration: 0.2 }
+                          }}
+                          style={{ transform: `translateZ(${10 + index * 5}px)` }}
+                        >
+                          <Tag size="s" variant="neutral" style={{ fontSize: '10px' }}>
+                            {topic}
+                          </Tag>
+                        </motion.div>
+                      ))}
+                      {repository.topics.length > 6 && (
+                        <motion.div
+                          style={{ transform: "translateZ(25px)" }}
+                          whileHover={{ scale: 1.1 }}
+                        >
+                          <Tag size="s" variant="accent" style={{ fontSize: '10px' }}>
+                            +{repository.topics.length - 6}
+                          </Tag>
+                        </motion.div>
+                      )}
+                    </Flex>
                   </Flex>
                 </motion.div>
               )}
+
+              {/* Subtle Divider */}
+              <motion.div
+                style={{ 
+                  height: '1px', 
+                  background: 'var(--neutral-alpha-weak)', 
+                  margin: '4px 0',
+                  transform: "translateZ(5px)"
+                }}
+                className="repo-divider"
+              />
 
               {/* Stats and Language */}
               <motion.div
                 style={{ transform: "translateZ(10px)" }}
                 whileHover={{ y: -3 }}
               >
-                <Flex horizontal="between" vertical="center" fillWidth className="repo-stats" wrap>
-                  <Flex gap="8" vertical="center" wrap>
-                    {repository.language && (
-                      <motion.div
-                        whileHover={{ scale: 1.2, rotate: 360 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <Flex gap="4" vertical="center">
-                          <motion.div
-                            className="repo-language-dot"
-                            style={{
-                              width: '8px',
-                              height: '8px',
-                              borderRadius: '50%',
-                              backgroundColor: languageColor,
-                              transform: "translateZ(5px)"
-                            }}
-                            whileHover={{ 
-                              scale: 1.5,
-                              boxShadow: `0 0 10px ${languageColor}`
-                            }}
-                          />
-                          <Text variant="label-default-xs" onBackground="neutral-medium">
-                            {repository.language}
-                          </Text>
-                        </Flex>
-                      </motion.div>
-                    )}
-                    
-                    {repository.stargazers_count > 0 && (
-                      <motion.div
-                        whileHover={{ scale: 1.1, y: -2 }}
-                        style={{ transform: "translateZ(5px)" }}
-                      >
-                        <Flex gap="4" vertical="center">
-                          <motion.div whileHover={{ rotate: 72 }}>
-                            <Icon name="star" size="xs" />
-                          </motion.div>
-                          <Text variant="label-default-xs" onBackground="neutral-medium">
-                            {repository.stargazers_count}
-                          </Text>
-                        </Flex>
-                      </motion.div>
-                    )}
-                    
-                    {repository.forks_count > 0 && (
-                      <motion.div
-                        whileHover={{ scale: 1.1, y: -2 }}
-                        style={{ transform: "translateZ(5px)" }}
-                      >
-                        <Flex gap="4" vertical="center">
-                          <motion.div whileHover={{ rotate: -15 }}>
-                            <Icon name="branch" size="xs" />
-                          </motion.div>
-                          <Text variant="label-default-xs" onBackground="neutral-medium">
-                            {repository.forks_count}
-                          </Text>
-                        </Flex>
-                      </motion.div>
-                    )}
-                  </Flex>
+                <Flex direction="column" fillWidth gap="8" className="repo-stats">
+                  {/* Primary Stats Row */}
+                  <Flex horizontal="between" vertical="center" fillWidth wrap>
+                    <Flex gap="8" vertical="center" wrap>
+                      {repository.language && (
+                        <motion.div
+                          whileHover={{ scale: 1.2, rotate: 360 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <Flex gap="4" vertical="center">
+                            <motion.div
+                              className="repo-language-dot"
+                              style={{
+                                width: '8px',
+                                height: '8px',
+                                borderRadius: '50%',
+                                backgroundColor: languageColor,
+                                transform: "translateZ(5px)"
+                              }}
+                              whileHover={{ 
+                                scale: 1.5,
+                                boxShadow: `0 0 10px ${languageColor}`
+                              }}
+                            />
+                            <Text variant="label-default-xs" onBackground="neutral-medium">
+                              {repository.language}
+                            </Text>
+                          </Flex>
+                        </motion.div>
+                      )}
+                      
+                      {repository.stargazers_count > 0 && (
+                        <motion.div
+                          whileHover={{ scale: 1.1, y: -2 }}
+                          style={{ transform: "translateZ(5px)" }}
+                        >
+                          <Flex gap="4" vertical="center">
+                            <motion.div whileHover={{ rotate: 72 }}>
+                              <Icon name="star" size="xs" />
+                            </motion.div>
+                            <Text variant="label-default-xs" onBackground="neutral-medium">
+                              {repository.stargazers_count}
+                            </Text>
+                          </Flex>
+                        </motion.div>
+                      )}
+                      
+                      {repository.forks_count > 0 && (
+                        <motion.div
+                          whileHover={{ scale: 1.1, y: -2 }}
+                          style={{ transform: "translateZ(5px)" }}
+                        >
+                          <Flex gap="4" vertical="center">
+                            <motion.div whileHover={{ rotate: -15 }}>
+                              <Icon name="branch" size="xs" />
+                            </motion.div>
+                            <Text variant="label-default-xs" onBackground="neutral-medium">
+                              {repository.forks_count}
+                            </Text>
+                          </Flex>
+                        </motion.div>
+                      )}
+                    </Flex>
 
-                  <motion.div
-                    style={{ transform: "translateZ(5px)" }}
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    <Text variant="label-default-xs" onBackground="neutral-weak">
-                      Updated {updatedDate}
-                    </Text>
-                  </motion.div>
+                    <motion.div
+                      style={{ transform: "translateZ(5px)" }}
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <Text variant="label-default-xs" onBackground="neutral-weak">
+                        {repositoryAge}
+                      </Text>
+                    </motion.div>
+                  </Flex>
+                  
+                  {/* Secondary Info Row */}
+                  <Flex horizontal="between" vertical="center" fillWidth>
+                    <motion.div
+                      style={{ transform: "translateZ(5px)" }}
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <Text variant="label-default-xs" onBackground="neutral-weak">
+                        Updated {formattedUpdated}
+                      </Text>
+                    </motion.div>
+                  </Flex>
                 </Flex>
               </motion.div>
 
@@ -433,9 +497,7 @@ export function RepositoryCard({ repository }: RepositoryCardProps) {
         /* Mobile responsive improvements */
         @media (max-width: 768px) {
           .repo-stats {
-            flex-direction: column;
-            align-items: flex-start !important;
-            gap: 8px;
+            gap: 6px;
             max-width: 100%;
             overflow-x: hidden;
           }
@@ -446,6 +508,10 @@ export function RepositoryCard({ repository }: RepositoryCardProps) {
             overflow-x: hidden;
           }
           
+          .repo-topics-section {
+            gap: 4px;
+          }
+          
           .repo-name {
             font-size: 0.9rem;
             line-height: 1.3;
@@ -453,6 +519,10 @@ export function RepositoryCard({ repository }: RepositoryCardProps) {
             max-width: 100%;
             overflow-wrap: break-word;
             hyphens: auto;
+          }
+          
+          .repo-divider {
+            margin: 6px 0 !important;
           }
           
           /* Disable 3D effects on mobile to prevent overflow */
@@ -471,18 +541,20 @@ export function RepositoryCard({ repository }: RepositoryCardProps) {
             max-width: 100%;
             width: 100%;
             box-sizing: border-box;
-            padding: 12px;
+            padding: 14px;
+            gap: 12px;
           }
         }
         
         @media (max-width: 480px) {
           .repository-card-content {
-            padding: 10px;
+            padding: 12px;
             max-width: 100%;
             width: 100%;
             overflow-x: hidden;
             transform: none !important;
             box-sizing: border-box;
+            gap: 10px;
           }
           
           .repository-card {
@@ -495,8 +567,20 @@ export function RepositoryCard({ repository }: RepositoryCardProps) {
           }
           
           .repo-name {
-            font-size: 0.85rem;
-            line-height: 1.2;
+            font-size: 0.88rem;
+            line-height: 1.25;
+          }
+          
+          .repo-stats {
+            gap: 4px;
+          }
+          
+          .repo-topics-section {
+            gap: 3px;
+          }
+          
+          .repo-divider {
+            margin: 4px 0 !important;
           }
           
           /* Disable all motion transforms on very small screens */
