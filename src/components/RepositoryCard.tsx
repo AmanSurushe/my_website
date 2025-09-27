@@ -447,39 +447,56 @@ export function RepositoryCard({ repository }: RepositoryCardProps) {
           }
           
           .repo-name {
-            font-size: 1rem;
-            line-height: 1.4;
+            font-size: 0.9rem;
+            line-height: 1.3;
             word-break: break-word;
             max-width: 100%;
+            overflow-wrap: break-word;
+            hyphens: auto;
           }
           
           /* Disable 3D effects on mobile to prevent overflow */
           .repository-card {
             transform-style: flat !important;
             max-width: 100%;
+            width: 100%;
             overflow: hidden;
             contain: layout style paint;
+            margin: 0;
           }
           
           .repository-card-content {
             transform: none !important;
             will-change: auto !important;
+            max-width: 100%;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px;
           }
         }
         
         @media (max-width: 480px) {
           .repository-card-content {
-            padding: 12px;
+            padding: 10px;
             max-width: 100%;
+            width: 100%;
             overflow-x: hidden;
             transform: none !important;
+            box-sizing: border-box;
           }
           
           .repository-card {
             max-width: 100%;
+            width: 100%;
             overflow-x: hidden;
             transform-style: flat !important;
             contain: layout style paint;
+            margin: 0;
+          }
+          
+          .repo-name {
+            font-size: 0.85rem;
+            line-height: 1.2;
           }
           
           /* Disable all motion transforms on very small screens */

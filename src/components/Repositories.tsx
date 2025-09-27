@@ -242,12 +242,7 @@ export function Repositories({ username, maxRepos, showFilters = true }: Reposit
             animationDelay: showFilters ? '0.3s' : '0s'
           }}
         >
-          <Grid 
-            columns="3"
-            gap="16" 
-            fillWidth
-            className="repository-grid-responsive"
-          >
+          <div className="repository-grid-responsive">
             {filteredAndSortedRepos.map((repo, index) => (
               <div
                 key={repo.id}
@@ -258,7 +253,7 @@ export function Repositories({ username, maxRepos, showFilters = true }: Reposit
                 <RepositoryCard repository={repo} />
               </div>
             ))}
-          </Grid>
+          </div>
         </div>
       ) : (
         <div
@@ -357,21 +352,22 @@ export function Repositories({ username, maxRepos, showFilters = true }: Reposit
         
         @media (max-width: 768px) {
           .filters-section {
-            padding: 0 4px;
+            padding: 0 8px;
             max-width: 100%;
             overflow-x: hidden;
           }
           
           .repository-grid {
-            padding: 0 4px;
+            padding: 0 8px;
             max-width: 100%;
             overflow-x: hidden;
           }
           
           .repository-grid-responsive {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
+            grid-template-columns: 1fr;
+            gap: 16px;
             max-width: 100%;
+            padding: 0 8px;
           }
           
           .filter-container {
@@ -385,21 +381,22 @@ export function Repositories({ username, maxRepos, showFilters = true }: Reposit
         
         @media (max-width: 480px) {
           .filters-section {
-            padding: 0 2px;
+            padding: 0 12px;
             max-width: 100%;
             overflow-x: hidden;
           }
           
           .repository-grid {
-            padding: 0 2px;
+            padding: 0 12px;
             max-width: 100%;
             overflow-x: hidden;
           }
           
           .repository-grid-responsive {
             grid-template-columns: 1fr;
-            gap: 8px;
+            gap: 12px;
             max-width: 100%;
+            padding: 0 12px;
           }
           
           .filter-container {
