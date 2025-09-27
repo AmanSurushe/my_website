@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { Flex, Text, Tag, Icon, SmartLink } from "@once-ui-system/core";
 import { GitHubRepository, getRepositoryLanguageColor } from "@/utils/github";
@@ -11,6 +11,7 @@ interface RepositoryCardProps {
 
 export function RepositoryCard({ repository }: RepositoryCardProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
   
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -20,6 +21,17 @@ export function RepositoryCard({ repository }: RepositoryCardProps) {
   
   const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["17.5deg", "-17.5deg"]);
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-17.5deg", "17.5deg"]);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const languageColor = getRepositoryLanguageColor(repository.language);
   const updatedDate = new Date(repository.updated_at).toLocaleDateString('en-US', {
@@ -52,14 +64,14 @@ export function RepositoryCard({ repository }: RepositoryCardProps) {
   return (
     <motion.div
       ref={ref}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
+      onMouseMove={isMobile ? undefined : handleMouseMove}
+      onMouseLeave={isMobile ? undefined : handleMouseLeave}
       style={{
-        rotateY,
-        rotateX,
-        transformStyle: "preserve-3d",
+        rotateY: isMobile ? 0 : rotateY,
+        rotateX: isMobile ? 0 : rotateX,
+        transformStyle: isMobile ? "flat" : "preserve-3d",
       }}
-      whileHover={{ 
+      whileHover={isMobile ? {} : { 
         z: 50,
         transition: { duration: 0.3, ease: "easeOut" }
       }}
@@ -308,6 +320,11 @@ export function RepositoryCard({ repository }: RepositoryCardProps) {
       </motion.div>
 
       <style jsx>{`
+        /* Global mobile optimizations */
+        * {
+          box-sizing: border-box;
+        }
+        
         @keyframes fadeInUp {
           from {
             opacity: 0;
@@ -435,6 +452,19 @@ export function RepositoryCard({ repository }: RepositoryCardProps) {
             word-break: break-word;
             max-width: 100%;
           }
+          
+          /* Disable 3D effects on mobile to prevent overflow */
+          .repository-card {
+            transform-style: flat !important;
+            max-width: 100%;
+            overflow: hidden;
+            contain: layout style paint;
+          }
+          
+          .repository-card-content {
+            transform: none !important;
+            will-change: auto !important;
+          }
         }
         
         @media (max-width: 480px) {
@@ -442,11 +472,20 @@ export function RepositoryCard({ repository }: RepositoryCardProps) {
             padding: 12px;
             max-width: 100%;
             overflow-x: hidden;
+            transform: none !important;
           }
           
           .repository-card {
             max-width: 100%;
             overflow-x: hidden;
+            transform-style: flat !important;
+            contain: layout style paint;
+          }
+          
+          /* Disable all motion transforms on very small screens */
+          .repository-card * {
+            transform: none !important;
+            will-change: auto !important;
           }
         }
       `}</style>

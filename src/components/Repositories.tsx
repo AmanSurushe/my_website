@@ -138,7 +138,7 @@ export function Repositories({ username, maxRepos, showFilters = true }: Reposit
   }
 
   return (
-    <Flex direction="column" fillWidth gap="24" style={{ overflowX: 'hidden' }}>
+    <Flex direction="column" fillWidth gap="24" style={{ overflowX: 'hidden', boxSizing: 'border-box' }}>
       {showFilters && (
         <div
           className="filters-section"
@@ -158,59 +158,58 @@ export function Repositories({ username, maxRepos, showFilters = true }: Reposit
             />
 
             {/* Filters */}
-            <Flex gap="16" wrap fillWidth direction="column">
-              {/* Language Filter */}
-              <Flex gap="8" wrap fillWidth>
+            <Flex gap="8" wrap fillWidth className="filter-container">
+              {/* Language Filters */}
+              <Button
+                variant={selectedLanguage === 'all' ? 'primary' : 'secondary'}
+                size="s"
+                onClick={() => setSelectedLanguage('all')}
+              >
+                All Languages
+              </Button>
+              {languages.slice(0, 4).map(lang => (
                 <Button
-                  variant={selectedLanguage === 'all' ? 'primary' : 'secondary'}
+                  key={lang}
+                  variant={selectedLanguage === lang ? 'primary' : 'secondary'}
                   size="s"
-                  onClick={() => setSelectedLanguage('all')}
+                  onClick={() => setSelectedLanguage(lang)}
                 >
-                  All Languages
+                  {lang}
                 </Button>
-                {languages.slice(0, 4).map(lang => (
-                  <Button
-                    key={lang}
-                    variant={selectedLanguage === lang ? 'primary' : 'secondary'}
-                    size="s"
-                    onClick={() => setSelectedLanguage(lang)}
-                  >
-                    {lang}
-                  </Button>
-                ))}
-              </Flex>
-
-              {/* Sort and Fork Filters */}
-              <Flex gap="8" wrap fillWidth>
-                <Button
-                  variant={sortBy === 'updated' ? 'primary' : 'secondary'}
-                  size="s"
-                  onClick={() => setSortBy('updated')}
-                >
-                  Recently Updated
-                </Button>
-                <Button
-                  variant={sortBy === 'stars' ? 'primary' : 'secondary'}
-                  size="s"
-                  onClick={() => setSortBy('stars')}
-                >
-                  Most Stars
-                </Button>
-                <Button
-                  variant={sortBy === 'name' ? 'primary' : 'secondary'}
-                  size="s"
-                  onClick={() => setSortBy('name')}
-                >
-                  Name
-                </Button>
-                <Button
-                  variant={showForks ? 'primary' : 'secondary'}
-                  size="s"
-                  onClick={() => setShowForks(!showForks)}
-                >
-                  {showForks ? 'Hide' : 'Show'} Forks
-                </Button>
-              </Flex>
+              ))}
+              
+              {/* Divider on larger screens */}
+              <div className="filter-divider" />
+              
+              {/* Sort Filters */}
+              <Button
+                variant={sortBy === 'updated' ? 'primary' : 'secondary'}
+                size="s"
+                onClick={() => setSortBy('updated')}
+              >
+                Recently Updated
+              </Button>
+              <Button
+                variant={sortBy === 'stars' ? 'primary' : 'secondary'}
+                size="s"
+                onClick={() => setSortBy('stars')}
+              >
+                Most Stars
+              </Button>
+              <Button
+                variant={sortBy === 'name' ? 'primary' : 'secondary'}
+                size="s"
+                onClick={() => setSortBy('name')}
+              >
+                Name
+              </Button>
+              <Button
+                variant={showForks ? 'primary' : 'secondary'}
+                size="s"
+                onClick={() => setShowForks(!showForks)}
+              >
+                {showForks ? 'Hide' : 'Show'} Forks
+              </Button>
             </Flex>
 
             {/* Stats */}
@@ -312,13 +311,48 @@ export function Repositories({ username, maxRepos, showFilters = true }: Reposit
           }
         }
         
+        /* Filter improvements */
+        .filter-container {
+          align-items: center;
+        }
+        
+        .filter-divider {
+          width: 1px;
+          height: 24px;
+          background-color: var(--neutral-alpha-medium);
+          margin: 0 4px;
+        }
+        
+        /* Global mobile optimizations */
+        * {
+          box-sizing: border-box;
+        }
+        
+        :global(.repository-page-container) {
+          padding: 0 16px;
+        }
+        
+        @media (min-width: 768px) {
+          :global(.repository-page-container) {
+            padding: 0 24px;
+          }
+        }
+        
+        @media (min-width: 1024px) {
+          :global(.repository-page-container) {
+            padding: 0 32px;
+          }
+        }
+        
         /* Mobile responsive improvements */
         .repository-grid-responsive {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           gap: 16px;
           width: 100%;
+          max-width: 100%;
           overflow-x: hidden;
+          box-sizing: border-box;
         }
         
         @media (max-width: 768px) {
@@ -339,6 +373,14 @@ export function Repositories({ username, maxRepos, showFilters = true }: Reposit
             gap: 12px;
             max-width: 100%;
           }
+          
+          .filter-container {
+            gap: 6px;
+          }
+          
+          .filter-divider {
+            display: none;
+          }
         }
         
         @media (max-width: 480px) {
@@ -358,6 +400,11 @@ export function Repositories({ username, maxRepos, showFilters = true }: Reposit
             grid-template-columns: 1fr;
             gap: 8px;
             max-width: 100%;
+          }
+          
+          .filter-container {
+            gap: 4px;
+            justify-content: center;
           }
         }
       `}</style>

@@ -21,7 +21,7 @@ export async function generateMetadata() {
 
 export default function RepositoriesPage() {
   return (
-    <Column maxWidth="l" gap="xl" horizontal="center">
+    <Column fillWidth gap="xl" horizontal="center" style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 16px" }} className="repository-page-container">
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -37,7 +37,7 @@ export default function RepositoriesPage() {
       />
       
       <Column fillWidth paddingY="24" gap="m">
-        <Column maxWidth="m" gap="12">
+        <Column fillWidth gap="12" style={{ maxWidth: "800px", margin: "0 auto" }}>
           <Heading as="h1" variant="display-strong-l">
             GitHub Repositories
           </Heading>
