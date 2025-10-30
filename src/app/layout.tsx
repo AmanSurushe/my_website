@@ -44,6 +44,7 @@ export default async function RootLayout({
         <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/api/rss" />
         <meta name="theme-color" content="#000000" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <meta name="google-site-verification" content="XHPiFvXTk-sPQl6wUshTxVxccN1IKi-kQbgBMyeuPn0" />
         <meta httpEquiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https:; media-src 'self'; object-src 'none'; child-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self';" />
         <meta httpEquiv="X-Frame-Options" content="DENY" />
         <script
