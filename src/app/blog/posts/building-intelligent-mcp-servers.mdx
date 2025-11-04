@@ -3,15 +3,17 @@ title: "Building Intelligent MCP Servers: Supercharge Your AI with Custom Tools"
 summary: "Learn how Model Context Protocol enables AI assistants to execute custom actions. Build your first MCP server with NestJS, Zod, and real-world examples."
 publishedAt: "2025-11-04"
 tag: "AI Tools"
-image: "/images/blog/mcp-server.png"
+image: "/images/blog/mcp-server.avif"
 images:
-  - "/images/blog/mcp-server.png"
+  - "/images/blog/mcp-server.avif"
 team: []
 ---
 
 ## The Problem with AI Assistants
 
 Claude, ChatGPT, and other LLMs are incredibly capable — but they're still limited.
+
+![MCP Server Architecture Overview](/images/blog/mcp-server.avif)
 
 They can't:
 
@@ -24,9 +26,9 @@ Until now.
 
 ## Introducing MCP (Model Context Protocol)
 
-**Model Context Protocol (MCP)** is a new open standard that lets you extend AI assistants with custom tools.
+Model Context Protocol (MCP) is a new open standard that lets you extend AI assistants with custom tools.
 
-Think of it as **"plugins for AI"** — you define the actions your AI can take, and the AI intelligently decides when and how to use them.
+Think of it as "plugins for AI" — you define the actions your AI can take, and the AI intelligently decides when and how to use them.
 
 Instead of saying:
 
@@ -36,20 +38,20 @@ Instead of saying:
 
 ## Why MCP Matters
 
-- 🧠 **Gives AI Superpowers** — It can now take real actions, not just give answers.
-- ✅ **Type-Safe** — You define the exact structure of each tool's parameters.
-- 🔒 **Secure** — You choose what the AI can access.
-- 🌐 **Standardized** — Works with Claude, ChatGPT, and any MCP-compatible client.
+- Gives AI Superpowers — It can now take real actions, not just give answers.
+- Type-Safe — You define the exact structure of each tool's parameters.
+- Secure — You choose what the AI can access.
+- Standardized — Works with Claude, ChatGPT, and any MCP-compatible client.
 
 ## Real-World Analogy: Task Management MCP Server
 
-Let's walk through a simpler, universal example: a **Task Management MCP Server**.
+Let's walk through a simpler, universal example: a Task Management MCP Server.
 
 Imagine you could talk to an AI like this:
 
 > "Create a new task: Fix login bug, assign it to Sarah, and set priority high."
 
-The AI doesn't just understand — it **acts**. It:
+The AI doesn't just understand — it acts. It:
 
 1. Fetches your team members
 2. Identifies "Sarah" in your system
@@ -70,7 +72,7 @@ This MCP server exposes a few essential tools:
 
 ### Folder Structure
 
-```
+```text
 src/
 ├── tasks/
 │   ├── task.tools.ts
@@ -90,7 +92,7 @@ Each folder represents a logical module. Tools simply act as the MCP interface �
 
 Instead of repeating response formatting everywhere, we define one `ResponseUtil`:
 
-### Before
+Before:
 
 ```javascript
 return {
@@ -98,10 +100,10 @@ return {
 };
 ```
 
-### After
+After:
 
 ```javascript
-return ResponseUtil.success('✅ Task created successfully', data);
+return ResponseUtil.success('Task created successfully', data);
 ```
 
 A single class standardizes responses, making tools clean and predictable.
@@ -110,8 +112,8 @@ A single class standardizes responses, making tools clean and predictable.
 
 Tool names are crucial — the clearer they are, the smarter the AI's decisions.
 
-| Bad | Good |
-|-----|------|
+| Bad naming | Good naming |
+|---|---|
 | `create_entry` | `create_new_task` |
 | `fetch_info` | `list_open_tasks` |
 | `update` | `update_task_status` |
@@ -138,7 +140,7 @@ The AI figures out the sequence:
 
 The user receives a confirmation like:
 
-> ✅ Closed 3 tasks assigned to Sarah
+> Closed 3 tasks assigned to Sarah
 
 You never had to tell the AI how to do it — you just defined what's possible.
 
@@ -173,33 +175,33 @@ export class TaskTools {
 
 The library handles:
 
-- Schema validation
-- Tool discovery
+- Schema validation with Zod
+- Tool discovery and registration
 - JSON response formatting
-- MCP compliance
+- MCP protocol compliance
 
 ## Why This Architecture Works
 
 | Benefit | Description |
-|---------|-------------|
-| **Type-Safe** | All parameters validated with Zod |
-| **Clean Separation** | Logic in services, not tools |
-| **Low Maintenance** | Add new tools in minutes |
-| **LLM Friendly** | Clear tool names and responses |
+|---|---|
+| Type-Safe | All parameters validated with Zod |
+| Clean Separation | Logic in services, not tools |
+| Low Maintenance | Add new tools in minutes |
+| LLM Friendly | Clear tool names and responses |
 
 ## The Bigger Picture
 
 The Model Context Protocol is quickly becoming the backbone of enterprise AI automation.
 
-- **Anthropic** → Created the MCP spec
-- **OpenAI** → Adding MCP support in ChatGPT
-- **Developers** → Using it to connect AI with their APIs, CRMs, and internal tools
+- Anthropic → Created the MCP spec
+- OpenAI → Adding MCP support in ChatGPT
+- Developers → Using it to connect AI with their APIs, CRMs, and internal tools
 
 Those who adopt MCP early will lead the next generation of AI-driven systems.
 
 ## My First MCP Project: Timesheet Automation
 
-After understanding MCP, I decided to build my first project — a **Timesheet MCP Server**.
+After understanding MCP, I decided to build my first project — a Timesheet MCP Server.
 
 It allows AI to:
 
@@ -210,11 +212,9 @@ It allows AI to:
 
 I used NestJS, Zod, and `@rekog/mcp-nest` to modularize the tools and created utilities like `ResponseUtil` for consistency.
 
-It reduced boilerplate code by ~40%, and adding a new MCP tool now takes only 20–25 lines.
+It reduced boilerplate code by approximately 40%, and adding a new MCP tool now takes only 20–25 lines.
 
-You can explore it here:
-
-🔗 [GitHub – AmanSurushe/timesheet-mcp](https://github.com/AmanSurushe/timesheet-mcp)
+You can explore it here: [GitHub – AmanSurushe/timesheet-mcp](https://github.com/AmanSurushe/timesheet-mcp)
 
 ## Final Thoughts
 
@@ -230,4 +230,4 @@ Then, the AI:
 
 Whether it's HR, DevOps, CRM, or customer support — every system can now talk to AI natively.
 
-**The future of intelligent automation starts with MCP — and your creativity decides what comes next.**
+The future of intelligent automation starts with MCP — and your creativity decides what comes next.

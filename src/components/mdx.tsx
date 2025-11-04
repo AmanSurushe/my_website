@@ -74,6 +74,11 @@ function createImage({ alt, src, ...props }: MediaProps & { src: string }) {
       sizes="(max-width: 960px) 100vw, 960px"
       alt={alt}
       src={src}
+      style={{
+        objectFit: 'contain',
+        width: '100%',
+        height: 'auto'
+      }}
       {...props}
     />
   );
@@ -359,30 +364,30 @@ function createEnhancedReactMarkdownComponents() {
         return null;
       }
       return (
-        <div style={{ 
-          marginTop: '24px', 
+        <div style={{
+          marginTop: '24px',
           marginBottom: '24px',
           width: '100%'
         }}>
           <Media
             fillWidth
-            aspectRatio="16 / 9"
+            aspectRatio="auto"
             radius="m"
             border="neutral-alpha-weak"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 960px"
             alt={alt}
             src={src}
-            style={{ 
-              objectFit: 'cover',
+            style={{
+              objectFit: 'contain',
               width: '100%',
               height: 'auto'
             }}
             {...props}
           />
           {alt && (
-            <Text 
-              variant="body-default-s" 
-              onBackground="neutral-weak" 
+            <Text
+              variant="body-default-s"
+              onBackground="neutral-weak"
               align="center"
               marginTop="8"
               style={{ fontStyle: 'italic' }}
