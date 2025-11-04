@@ -177,6 +177,85 @@ function createHR() {
   );
 }
 
+function createTable({ children }: { children: ReactNode }) {
+  return (
+    <div style={{
+      overflowX: 'auto',
+      marginTop: '16px',
+      marginBottom: '16px',
+      border: '1px solid #e5e5e5',
+      borderRadius: '8px'
+    }}>
+      <table style={{
+        width: '100%',
+        borderCollapse: 'collapse',
+        fontSize: '14px'
+      }}>
+        {children}
+      </table>
+    </div>
+  );
+}
+
+function createTableHead({ children }: { children: ReactNode }) {
+  return (
+    <thead style={{
+      borderBottom: '2px solid #e5e5e5',
+      backgroundColor: '#f8f9fa'
+    }}>
+      {children}
+    </thead>
+  );
+}
+
+function createTableBody({ children }: { children: ReactNode }) {
+  return (
+    <tbody>
+      {children}
+    </tbody>
+  );
+}
+
+function createTableRow({ children }: { children: ReactNode }) {
+  return (
+    <tr style={{
+      borderBottom: '1px solid #f0f0f0'
+    }}>
+      {children}
+    </tr>
+  );
+}
+
+function createTableHeader({ children }: { children: ReactNode }) {
+  return (
+    <th style={{
+      padding: '12px 16px',
+      textAlign: 'left',
+      fontWeight: '600',
+      color: '#374151',
+      backgroundColor: '#f8f9fa',
+      borderBottom: '2px solid #e5e5e5'
+    }}>
+      <Text variant="body-default-s">
+        <strong>{children}</strong>
+      </Text>
+    </th>
+  );
+}
+
+function createTableCell({ children }: { children: ReactNode }) {
+  return (
+    <td style={{
+      padding: '12px 16px',
+      borderBottom: '1px solid #f0f0f0'
+    }}>
+      <Text variant="body-default-s">
+        {children}
+      </Text>
+    </td>
+  );
+}
+
 const components = {
   p: createParagraph as any,
   h1: createHeading("h1") as any,
@@ -193,6 +272,12 @@ const components = {
   ul: createList as any,
   li: createListItem as any,
   hr: createHR as any,
+  table: createTable as any,
+  thead: createTableHead as any,
+  tbody: createTableBody as any,
+  tr: createTableRow as any,
+  th: createTableHeader as any,
+  td: createTableCell as any,
   Heading,
   Text,
   CodeBlock,
