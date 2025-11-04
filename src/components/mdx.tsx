@@ -620,6 +620,16 @@ export function CustomMDX(props: CustomMDXProps) {
     );
   }
 
-  // For production, use full MDX
-  return <MDXRemote {...props} components={{ ...components, ...(props.components || {}) }} />;
+  // For production, use full MDX with GitHub Flavored Markdown support for tables
+  return (
+    <MDXRemote
+      {...props}
+      components={{ ...components, ...(props.components || {}) }}
+      options={{
+        mdxOptions: {
+          remarkPlugins: [remarkGfm],
+        }
+      }}
+    />
+  );
 }

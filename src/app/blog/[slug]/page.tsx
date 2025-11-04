@@ -121,28 +121,58 @@ export default async function BlogPost({
           <CustomMDX source={post.content} />
           
           {/* Social Sharing */}
-          <Flex gap="12" paddingTop="32" paddingBottom="16" wrap>
-            <Text variant="body-default-s" onBackground="neutral-medium">Share this post:</Text>
-            <SmartLink 
-              href={`https://x.com/intent/tweet?text=${encodeURIComponent(post.metadata.title)}&url=${encodeURIComponent(`${baseURL}${blog.path}/${post.slug}`)}`}
-              target="_blank"
-              style={{ textDecoration: 'none' }}
-            >
-              <Flex gap="8" padding="8" radius="s" background="neutral-alpha-weak" vertical="center">
-                <Icon name="x" size="s" />
-                <Text variant="label-default-s">X</Text>
-              </Flex>
-            </SmartLink>
-            <SmartLink 
-              href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`${baseURL}${blog.path}/${post.slug}`)}`}
-              target="_blank"
-              style={{ textDecoration: 'none' }}
-            >
-              <Flex gap="8" padding="8" radius="s" background="neutral-alpha-weak" vertical="center">
-                <Icon name="linkedin" size="s" />
-                <Text variant="label-default-s">LinkedIn</Text>
-              </Flex>
-            </SmartLink>
+          <Flex gap="16" paddingTop="40" paddingBottom="24" wrap vertical="center">
+            <Text variant="body-default-s" onBackground="neutral-medium">
+              Share:
+            </Text>
+            <Flex gap="12" wrap>
+              <SmartLink
+                href={`https://x.com/intent/tweet?text=${encodeURIComponent(post.metadata.title)}&url=${encodeURIComponent(`${baseURL}${blog.path}/${post.slug}`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ textDecoration: 'none' }}
+              >
+                <Flex
+                  gap="8"
+                  padding="12"
+                  radius="m"
+                  background="neutral-alpha-weak"
+                  border="neutral-alpha-medium"
+                  vertical="center"
+                  className="social-share-btn"
+                  style={{
+                    transition: 'all 0.3s ease',
+                    cursor: 'pointer'
+                  }}
+                >
+                  <Icon name="x" size="m" />
+                  <Text variant="label-default-s">X</Text>
+                </Flex>
+              </SmartLink>
+              <SmartLink
+                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`${baseURL}${blog.path}/${post.slug}`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ textDecoration: 'none' }}
+              >
+                <Flex
+                  gap="8"
+                  padding="12"
+                  radius="m"
+                  background="neutral-alpha-weak"
+                  border="neutral-alpha-medium"
+                  vertical="center"
+                  className="social-share-btn"
+                  style={{
+                    transition: 'all 0.3s ease',
+                    cursor: 'pointer'
+                  }}
+                >
+                  <Icon name="linkedin" size="m" />
+                  <Text variant="label-default-s">LinkedIn</Text>
+                </Flex>
+              </SmartLink>
+            </Flex>
           </Flex>
         </Column>
         

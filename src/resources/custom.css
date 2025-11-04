@@ -82,3 +82,23 @@
 }
 
 /* Responsive navigation now handled by React hooks in Header component */
+
+/* Social sharing buttons hover effects */
+.social-share-btn {
+  transition: all 0.3s ease;
+}
+
+.social-share-btn:hover {
+  background-color: var(--neutral-alpha-medium);
+  transform: translateY(-2px);
+}
+
+/* Hover lift effect for navigation cards */
+.hover-lift {
+  transition: all 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  border-color: var(--neutral-alpha-medium);
+}
