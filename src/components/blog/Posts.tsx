@@ -49,8 +49,9 @@ export function Posts({
             {displayedBlogs.length > 0 && (
                 <Grid
                     columns={columns}
-                    fillWidth 
-                    marginBottom="40" 
+                    s={{ columns: "1" }}
+                    fillWidth
+                    marginBottom="40"
                     gap="l">
                     {displayedBlogs.map((post) => (
                         <Post
